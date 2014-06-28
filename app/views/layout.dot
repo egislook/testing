@@ -1,0 +1,12 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="/css/default.css">
+		<script src="/js/default.js"></script>
+	</head>
+	<body>
+	    {{? it.settings.env === 'development' && true }}
+	        {{#def.loadfile('_comp/data.dot')}}
+    	{{?}}
+		{{=it.body}}
+	</body>
+</html>

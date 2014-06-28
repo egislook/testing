@@ -1,0 +1,42 @@
+<style>
+#formattedJson{border-bottom:2px solid #282828;font-size:10px;z-index:0; height:20px; overflow:hidden; background:#FFFFFF;}
+.block{padding-top:5px;padding-bottom:5px;}
+.blockInner{display:block;border-left:1px dotted #bbb;margin-left:12px;min-height:10px;}
+.blockInner:hover{background:#e8e8e8; cursor:pointer;}
+.hide{display:none;}
+.collapsed{-webkit-transform:rotate(-90deg);width:18px;height:20px;left:0px;top:0px}
+.e:hover{opacity:0.35}
+.e{width:10px;height:10px;background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAD1JREFUeNpiYGBgOADE%2F3Hgw0DM4IRHgSsDFOzFInmMAQnY49ONzZRjDFiADT7dMLALiE8y4AGW6LoBAgwAuIkf%2F%2FB7O9sAAAAASUVORK5CYII%3D");background-repeat:no-repeat;opacity:0.15})}}
+</style>
+
+<script>
+function show(x){
+  if(x.getElementsByTagName('pre')[0].classList.contains('hide')){
+    x.getElementsByTagName('pre')[0].classList.remove('hide');
+    x.getElementsByClassName('e')[0].classList.add('collapsed');
+  } else {
+    x.getElementsByTagName('pre')[0].classList.add('hide');
+    x.getElementsByClassName('e')[0].classList.remove('collapsed');
+  }
+  console.log(x);
+}
+</script>
+<div onmouseover="this.style.height='auto'" onmouseout="this.style.height='20px'" id="formattedJson">
+  <div style="background:#282828;color:#FFFFFF;padding:5px; text-align:center;">
+  page data
+  </div>
+  {{ for(i in it) { }}
+    {{
+      var temp = JSON.stringify(it[i], null, 4);
+    }}
+    <div class="block" ondblclick="show(this);">
+    <span style="float:left" class="e"></span><span style="float:left">"<b>{{=i}}</b>":</span>
+    <span class="clear blockInner">
+    <pre class="hide" style="word-wrap: break-word; white-space: pre-wrap;">
+  {{=temp}}
+      
+    </pre>
+    </span>
+    </div>
+  {{ } }}
+</div>
