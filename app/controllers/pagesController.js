@@ -2,10 +2,18 @@ var locomotive = require('locomotive')
   , Controller = locomotive.Controller;
 
 var pagesController = new Controller();
+var Status = require(process.cwd()+'/app/models/' + 'status');
 
 pagesController.main = function() {
   this.title = 'Locomotive';
-  this.render();
+  
+  //to secure callback
+  var app = this;
+  Status.returnStatus(function(err, status){
+    app.status = err ||status;
+    app.render();
+  })
+  
 }
 
 pagesController.blabla = function() {
