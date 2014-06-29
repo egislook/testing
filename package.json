@@ -12,7 +12,8 @@
     "express-dot" : "*",
     "locomotive-mongoose" : "*",
     "mongoose" : "*",
-    "less" : "*"
+    "less" : "*",
+    "async" : "*"
   },
   "scripts": {
     "start": "node_modules/locomotive/bin/lcm.js server"
