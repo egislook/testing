@@ -1,19 +1,36 @@
 
 
 module.exports = function() {
+  
+  //Dot engine loader
   var doT = require('express-dot');
   var dir = process.cwd() + '/app/views/';
-  // Configure view-related settings.  Consult the Express API Reference for a
-  // list of the available [settings](http://expressjs.com/api.html#app-settings).
   this.set('views', dir);
   this.set('view engine', 'dot');
-
-  // Register EJS as a template engine.
+  // Register Dot as a template engine.
   this.engine('dot', doT.__express);
-  
+  //file loader inside of views
   doT.setGlobals({
     loadfile:function(path){return require('fs').readFileSync(dir + path, 'utf8');}
   });
+  
+  //Less engine loader
+  var fs      = require('fs');
+  var less    = require('less');
+
+  if(this.env == 'development' && true){
+    fs.readFile(dir + '_styles/styles.less', function(err,styles) {
+        console.log(__dirname);
+        if(err) return console.error('Less MSG <> Could not open file: %s',err);
+        less.render(styles.toString(), function(er,css) {
+            if(er) return console.error(er);
+            fs.writeFile(process.cwd() + '/public/css/default.css', css, function(e) {
+                if(e) return console.error(e);
+                console.log('Less MSG <> CSS Compiled');
+            });
+        });
+    });
+  }
 
   // Override default template extension.  By default, Locomotive finds
   // templates using the `name.format.engine` convention, for example

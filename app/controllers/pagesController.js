@@ -10,7 +10,7 @@ pagesController.main = function() {
   //to secure callback
   var app = this;
   Status.returnStatus(function(err, status){
-    app.status = err ||status;
+    app.status = err || status;
     app.render();
   })
   
