@@ -1,6 +1,6 @@
 <style>
 #formattedJson{border-bottom:2px solid #282828;font-size:10px;z-index:0; height:20px; overflow:hidden; background:#FFFFFF;}
-.block{padding-top:5px;padding-bottom:5px;}
+.blocky{padding-top:5px;padding-bottom:5px;}
 .blockInner{display:block;border-left:1px dotted #bbb;margin-left:12px;min-height:10px;}
 .blockInner:hover{background:#e8e8e8; cursor:pointer;}
 .hide{display:none;}
@@ -21,7 +21,7 @@ function show(x){
   console.log(x);
 }
 </script>
-<div onmouseover="this.style.height='auto'" onmouseout="this.style.height='20px'" id="formattedJson">
+<div onclick="this.style.height='auto'" onmouseleave="this.style.height='20px'" id="formattedJson">
   <div style="background:#282828;color:#FFFFFF;padding:5px; text-align:center;">
   page data
   </div>
@@ -29,7 +29,7 @@ function show(x){
     {{
       var temp = JSON.stringify(it[i], null, 4);
     }}
-    <div class="block" ondblclick="show(this);">
+    <div class="blocky" ondblclick="show(this);">
     <span style="float:left" class="e"></span><span style="float:left">"<b>{{=i}}</b>":</span>
     <span class="clear blockInner">
     <pre class="hide" style="word-wrap: break-word; white-space: pre-wrap;">

@@ -13,9 +13,14 @@
     "locomotive-mongoose" : "*",
     "mongoose" : "*",
     "less" : "*",
-    "async" : "*"
+    "async" : "*",
+    "cheerio" : "*",
+    "request" : "*"
   },
   "scripts": {
-    "start": "node_modules/locomotive/bin/lcm.js server"
+    "start": "nodemon server.js --env 'development'"
+  },
+  "devDependencies": {
+      "nodemon": "*"
   }
 }

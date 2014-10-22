@@ -3,10 +3,10 @@ var mongoose = require("mongoose");
 module.exports = function() {
   switch (this.env) {
     case 'development':
-      mongoose.connect('mongodb://admin:mkalns@ds053139.mongolab.com:53139/mkalns');
+      mongoose.connect('mongodb://stat:stattrackstattrackstattrack@ds063889.mongolab.com:63889/stattrack');
       break;
     case 'production':
-      mongoose.connect('mongodb://admin:mkalns@ds053139.mongolab.com:53139/mkalns');
+      mongoose.connect('mongodb://stat:stattrackstattrackstattrack@ds063889.mongolab.com:63889/stattrack');
       break;
   }
   

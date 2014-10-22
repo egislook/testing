@@ -1,1 +1,19 @@
-<div>test page</div>
+<div class="spc-md-tb spc-lg-l bg-w mrg-xs clear">
+    <img class="left" src="http://s26.postimg.org/xojtodr3d/stattrackbets.png" height="100">
+    <div class="txt-oswald txt-s1 txt-lg left spc-lg">Sometimes you win. Sometimes you lose. Sometimes you letting others decide for you.<br>Sharing community.</div>
+</div>
+
+{{? it.matches}}
+    {{~it.matches :match}}
+        <div class="tb spc-md-b">
+            {{#def.loadfile('pages/main/match.dot')}}
+            
+            {{?it.bets[match.matchId]}}
+                {{~it.bets[match.matchId] :bet}}
+                    {{#def.loadfile('pages/main/bet.dot')}}
+                {{~}}
+            {{?}}
+        
+        </div>
+    {{~}}
+{{?}}

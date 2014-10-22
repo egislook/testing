@@ -1,7 +1,7 @@
 
 
 module.exports = function() {
-  
+  var env = this.env;
   //Dot engine loader
   var doT = require('express-dot');
   var dir = process.cwd() + '/app/views/';
@@ -9,6 +9,7 @@ module.exports = function() {
   this.set('view engine', 'dot');
   // Register Dot as a template engine.
   this.engine('dot', doT.__express);
+  
   //file loader inside of views
   doT.setGlobals({
     loadfile:function(path){return require('fs').readFileSync(dir + path, 'utf8');}
@@ -18,7 +19,7 @@ module.exports = function() {
   var fs      = require('fs');
   var less    = require('less');
 
-  if(this.env == 'development' && true){
+  if(this.env == 'development' && false){
     fs.readFile(dir + '_styles/styles.less', function(err,styles) {
         console.log(__dirname);
         if(err) return console.error('Less MSG <> Could not open file: %s',err);

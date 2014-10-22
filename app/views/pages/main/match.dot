@@ -1,0 +1,20 @@
+
+<div class="align-l spc-lg-l txt-xs txt-w clear">
+    <span class="bg-b spc-sm">{{=match.games}}</span>
+    <span class="bg-b spc-sm">{{=match.date}}</span>
+    <span class="bg-b spc-sm">{{=match.start}}</span>
+    <a target="_blank" href="http://csgolounge.com/match?m={{=match.matchId}}"><span class="bg-g spc-sm txt-w">cs:go lounge</span></a>
+</div>
+<div class="txt-w tr align-m bg-b txt-xlg txt-oswald">
+     <div class="td align-r col-6 spc-sm-t">
+        <img height="50" class="brd-xs brd-w right" src="{{=match.t1.img}}">
+        <h1 class="right spc-md-r"><span class="txt-lg txt-s1">({{=match.t1.rate}})</span> {{=match.t1.name}}</h1>
+    </div>
+    <div class="align-c align-m td spc-lg-rl">
+        <img class="" width="20" src="http://s17.postimg.org/cfcajjfnz/image.png">
+    </div>
+    <div class="td align-l col-6">
+        <img height="50" class="left brd-xs brd-w" src="{{=match.t2.img}}">
+        <h1 class="left spc-md-l">{{=match.t2.name}} <span class="txt-lg txt-s1">({{=match.t2.rate}})<span></h1>
+    </div>
+</div>
