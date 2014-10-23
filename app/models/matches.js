@@ -10,9 +10,9 @@ var model = {
   Matches : mongoose.model('Matches', matchSchema),
   
   return : function(callback){
-    model.Matches.find({}, function(err, data) {
+    model.Matches.find({}).lean().sort({date : -1}).exec(function(err, data) {
       callback(err, data);
-    }).lean();
+    });
   },
   
   returnById : function(id, callback){
