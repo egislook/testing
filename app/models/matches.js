@@ -21,6 +21,25 @@ var model = {
     }).lean();
   },
   
+  returnByList : function(list, callback){
+    model.Matches.find({matchId : {$in : list}}, function(err, data) {
+      callback(err, data);
+    }).lean();
+  },
+  
+  returnUnfinished : function(callback){
+    model.Matches.find({finished : {$exists : false}}, function(err, data) {
+      callback(err, data);
+    }).lean();
+  },
+  
+  finished : function(data, callback){
+    data.updated = help.date('ms');
+    model.Matches.update({matchId : data.matchId}, {$set : data}, {upsert : true}, function(err, data) {
+      callback(err, data);
+    });
+  },
+  
   save : function(data, callback){
     data.date = help.date();
     data.updated = help.date('ms');
@@ -34,7 +53,7 @@ var model = {
       if(!err && data){
         callback(err,{a :'none', d : data});
       }else{
-        model.getHtml(id, function(err,data){
+        model.getOneJson(id, function(err,data){
           if(!err && data){
             data.matchId = id;
             model.save(data, function(){
@@ -48,7 +67,7 @@ var model = {
     });
   },
   
-  getHtml : function(id, callback){
+  getOneJson : function(id, callback){
     //id = '1685';
     var url = 'http://csgolounge.com/match?m='+id;
     var match = {};
@@ -76,6 +95,44 @@ var model = {
         }
       }
       callback(err, match);
+    })
+  },
+  
+  getAllJson : function(callback){
+    //id = '1685';
+    var url = 'http://csgolounge.com/';
+    var matches = [];
+    var match;
+    request(url,function(err,body){
+      if(!err && body && body.statusCode == 200){
+        var $ = cheerio.load(body.body);
+        var games = $('.matchmain');
+        
+        games.each(function(){
+          match = false;
+          var time = false;
+          var game = $(this);
+          var href = game.find('a').attr('href');
+          var type = href.indexOf('match') != -1 ? 'match' : false;
+          if(type){
+            
+            match = {
+              time : game.find('.whenm').eq(0).text(),
+              matchId : game.find('a').attr('href').split('?m=')[1],
+              finished : game.find('.notaviable').length ? true : false
+            }
+            
+            if(!match.aviable && game.find('img').length){
+              match.winner = game.find('.team').eq(0).find('img').length ? 't1' : 't2';
+            }
+            
+            time = match.time;
+            match.time = parseInt(match.time) + ' ' + (time.indexOf('minute')!=-1 ? 'm' : time.indexOf('hour')!=-1 ? 'h' : 'd');
+          }
+          match ? matches.push(match) : false;
+        })
+      }
+      callback(err, matches);
     })
   }
   

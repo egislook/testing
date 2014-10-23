@@ -5,3 +5,40 @@
   text-decoration: none;
   box-sizing: border-box;
 }
+
+.rad-circle{
+  border-radius: 50%;
+}
+
+.line-v{
+  width:1px;
+}
+.line-h{
+  height:1px;
+}
+
+.rad-sm-rl-t {
+  border-radius: 5px 5px 0 0;
+}
+.rad-sm-t1{
+  border-radius: 5px 0 5px 5px;
+}
+.rad-sm-t2{
+  border-radius: 0 5px 5px 5px;
+}
+
+.sh-box-b-s1-l {
+  box-shadow: 0 1px 5px #ededed;
+}
+
+.mrg-md-b{
+  margin-bottom:10px;
+}
+
+.line-w-md{
+  width:10px;
+}
+
+.line-h-md{
+  height:10px;
+}

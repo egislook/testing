@@ -39,9 +39,21 @@ var model = {
     });
   },
   
+  finished : function(data, callback){
+    var bet = { 
+      winner : data.winner || 'none',
+      updated : help.date('ms')
+    }
+    
+    model.Bets.update({matchId : data.matchId}, {$set :bet}, {upsert : true}, function(err, data) {
+      callback(err, data);
+    });
+  },
+  
   update : function(data, callback){
     var bet = { 
       win : data.win,
+      pot : data.pot,
       updated : help.date('ms')
     }
     

@@ -72,8 +72,28 @@ pagesController.stats = function(){
     res.send({msg : 'bet saved', ok : true});
   } else res.send(a);
   
-  //console.log(games);
-  
+}
+
+pagesController.match = function(){
+  var app=this,req=app.req,res=app.res;
+  var id = req.params.id || false;
+  if(id){
+    Matches.getOneJson(id, function(err, data){
+      res.send(data);
+    })
+  } else {
+    Matches.getAllJson(function(err, data){
+      var matches = {};
+      for(var match in data){
+        match = data[match];
+        matches[match['matchId']] = match;
+      }
+      
+      Matches.returnUnfinished(function(err, games){
+        res.send(games);
+      })
+    })
+  }
 }
 
 module.exports = pagesController;
