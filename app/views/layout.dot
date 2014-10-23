@@ -2,12 +2,14 @@
 	<head>
 		<link rel="stylesheet" type="text/css" href="/css/default.css">
 		<link rel="stylesheet" type="text/css" href="/css/fbf.css">
-		<script src="/js/default.js"></script>
 	</head>
 	<body>
 	    {{? it.settings.env === 'development' && false }}
 	        {{#def.loadfile('_comp/data.dot')}}
     	{{?}}
 		{{=it.body}}
+		<script src="/js/default.js"></script>
+		<script>timer();</script>
+		
 	</body>
 </html>

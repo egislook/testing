@@ -2,6 +2,7 @@ var locomotive = require('locomotive'),
   async = require('async'),
   Controller = locomotive.Controller;
 
+var help = require(process.cwd()+'/lib/' + 'help');
 var pagesController = new Controller();
 var Matches = require(process.cwd()+'/app/models/' + 'matches');
 var Bets = require(process.cwd()+'/app/models/' + 'bets');
@@ -25,6 +26,7 @@ pagesController.main = function() {
       app.html = err || results.html;
       app.matches = err || results.matches;
       app.bets = err || results.bets;
+      app.ms = help.date('ms')+7200000;
       app.render();
     }
   );
@@ -79,6 +81,8 @@ pagesController.match = function(){
   var id = req.params.id || false;
   if(id){
     Matches.getOneJson(id, function(err, data){
+      data.matchId = id;
+      Matches.save(data, function(){});
       res.send(data);
     })
   } else {

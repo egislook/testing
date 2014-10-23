@@ -2,7 +2,10 @@
     <div class="td">
         <div class="right txt-xs txt-w clear spc-sm-t spc-xs-b brd-xs-b mrg-md-b">
             <span class="bg-s1 spc-sm rad-sm">{{=match.date}}</span>
-            <span class="bg-s1 spc-sm rad-sm">{{=match.start}}</span>
+            {{? match.startMs}}
+                {{var left = (match.startMs-it.ms)/1000;}}
+                <span class="bg-b spc-sm txt-w rad-sm time-left">{{= left<1 ?  'live' : left}}</span>
+            {{?}}
         </div>
     </div>
     <div class="td">

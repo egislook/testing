@@ -10,7 +10,7 @@ var model = {
   Matches : mongoose.model('Matches', matchSchema),
   
   return : function(callback){
-    model.Matches.find({}).lean().sort({date : -1}).exec(function(err, data) {
+    model.Matches.find({}).lean().sort({date : -1, finished : 1}).exec(function(err, data) {
       callback(err, data);
     });
   },
@@ -93,6 +93,12 @@ var model = {
             img : teams.eq(1).css('background').split("'")[1]
           }
         }
+       
+        match.date = help.dateFromNow(match.left, 'standart');
+        match.startMs = help.date('ms', match.date+' '+match.start.split(' ')[0]);
+        
+        match.startDate = help.date('full', match.startMs);
+        
       }
       callback(err, match);
     })
