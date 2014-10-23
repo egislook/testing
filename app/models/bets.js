@@ -31,7 +31,8 @@ var model = {
       items : data.items,
       date : help.date('ms'),
       updated : help.date('ms'),
-      pot : data.pot
+      pot : data.pot,
+      value : data.value
     }
     model.Bets.update({matchId : bet.matchId, user : bet.user}, bet, {upsert : true}, function(err, data) {
       callback(err, bet);

@@ -5,16 +5,19 @@
 </div>
 
 {{? it.matches}}
+    
     {{~it.matches :match}}
-        <div class="tb spc-md-b">
-            {{#def.loadfile('pages/main/match.dot')}}
-            
-            {{?it.bets[match.matchId]}}
-                {{~it.bets[match.matchId] :bet}}
-                    {{#def.loadfile('pages/main/bet.dot')}}
-                {{~}}
-            {{?}}
-        
+        <div>
+            <div class="tb spc-md-b">
+                {{#def.loadfile('pages/main/match.dot')}}
+                
+                {{?it.bets[match.matchId]}}
+                    {{~it.bets[match.matchId] :bet}}
+                        {{#def.loadfile('pages/main/bet.dot')}}
+                    {{~}}
+                {{?}}
+            </div>
         </div>
     {{~}}
+    
 {{?}}
