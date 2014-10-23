@@ -27,7 +27,7 @@ var update = function(){
 
 module.exports = function() {
     
-  repeat(3600000, function(){
+  repeat(600000, function(){
       update();
   })
 }
