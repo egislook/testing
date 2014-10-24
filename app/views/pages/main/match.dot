@@ -37,7 +37,7 @@
             {{? winner=='t1'}}
                 <h1 class="spc-md-l txt-up left txt-g">win <span class="txt-md">({{=match.t1.rate}})</span></h1>
             {{??}}
-                <h1 class="spc-md-l txt-up left txt-red">lose</h1>
+                <h1 class="spc-md-l txt-up left txt-red">loss</h1>
             {{?}}
         {{??}}
             <span class="txt-md spc-lg-t spc-lg-l txt-bold txt-w left">{{=match.t1.rate}}</span>

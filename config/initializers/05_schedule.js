@@ -8,6 +8,7 @@ var repeat = function(interval, fn){
 
 var update = function(){
  Matches.returnUnfinished(function(err, games){
+     console.log('checking unfinished games ' + games.length);
     if(games && games.length){
         Matches.getAllJson(function(err, data){
             var matches = help.arrToObj(data, 'matchId');
@@ -16,6 +17,7 @@ var update = function(){
                 if(matches[games[i].matchId] && matches[games[i].matchId].finished){
                     var match = matches[games[i].matchId];
                     delete match.time;
+                    console.log('upadet ' + games[i].matchId);
                     Matches.finished(match, function(){});
                     Bets.finished(match, function(){});
                 }

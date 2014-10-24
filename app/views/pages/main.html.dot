@@ -1,19 +1,4 @@
-<div class="w-max mrg-xs sh-box-b-s1-l brd-xs-b brd-w h-ml bg-stickers clear">
-    <div class="spc-lg mrg-xs brd-xs-b brd-s1-l clear">
-        <div class="col-3 left">
-            <img src="http://s26.postimg.org/xojtodr3d/stattrackbets.png" height="107">
-        </div>
-        <div class="txt-oswald txt-w txt-md left spc-lg-tb col-7">
-            <span>
-                Sometimes you win. Sometimes you lose. Sometimes you letting others decide for you.
-                <br>Sharing community.
-            </span>
-        </div>
-        <div class="right col-2">
-            <img src="http://s26.postimg.org/cnts3gnl5/bunny.png" height="107">
-        </div>
-    </div>
-</div>
+{{#def.loadfile('pages/main/header.dot')}}
 
 {{? it.matches}}
     
