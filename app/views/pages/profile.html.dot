@@ -1,0 +1,28 @@
+<div class="clear sh-box-b-s1-l brd-xs-b brd-w h-ml ">
+    <div class="spc-lg bg-w mrg-xs brd-xs-b brd-s1-l clear">
+        <img class="left col-3 spc-sm" src="http://s26.postimg.org/xojtodr3d/stattrackbets.png" height="107">
+        <div class="txt-oswald txt-s1 txt-md left spc-lg col-7">Sometimes you win. Sometimes you lose. Sometimes you letting others decide for you.<br>Sharing community.</div>
+        /*<img class="right col-2 spc-sm" src="http://s26.postimg.org/cnts3gnl5/bunny.png">*/
+    </div>
+</div>
+
+{{? it.matches}}
+    
+    {{~it.matches :match}}
+        {{
+            var winner = match.winner ? match.winner : false;
+        }}
+        <div class="spc-md {{= match.finished ? 'op-6' : ''}}">
+            <div class="tb spc-md-b">
+                {{#def.loadfile('pages/main/match.dot')}}
+                
+                {{?it.bets[match.matchId]}}
+                    {{~it.bets[match.matchId] :bet}}
+                        {{#def.loadfile('pages/main/bet.dot')}}
+                    {{~}}
+                {{?}}
+            </div>
+        </div>
+    {{~}}
+    
+{{?}}

@@ -11,9 +11,11 @@
     {{?}}
     <div class="td spc-lg-rl spc-xs-t mrg-xs-b txt-s2-l align-m">
         <div class="spc-sm bg-s1-l rad-sm">
-            <div class="spc-xs rad-sm bg-bl txt-w align-c">
-                {{=bet.user}}
-            </div>
+            <a href="/{{=bet.user}}">
+                <div class="spc-xs bt rad-sm bg-bl txt-w align-c">
+                    {{=bet.user}}
+                </div>
+            </a>
             <div class="clear">
                 {{?bet.items}}
                     {{~bet.items :item}}

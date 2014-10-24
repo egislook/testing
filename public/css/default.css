@@ -42,3 +42,12 @@
 .line-h-md{
   height:10px;
 }
+
+.h-ml{
+  height:150px;
+}
+
+.bg-stickers{
+  background-image: url('http://s26.postimg.org/pponksqqx/sticker_header4.jpg');
+  background-size:100%;
+}

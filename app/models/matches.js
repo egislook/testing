@@ -22,9 +22,9 @@ var model = {
   },
   
   returnByList : function(list, callback){
-    model.Matches.find({matchId : {$in : list}}, function(err, data) {
+    model.Matches.find({matchId : {$in : list}}).sort({date : -1, finished : 1}).lean().exec(function(err, data) {
       callback(err, data);
-    }).lean();
+    });
   },
   
   returnUnfinished : function(callback){

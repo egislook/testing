@@ -22,6 +22,16 @@ var model = {
     }).lean();
   },
   
+  returnByUser : function(user, callback){
+    model.Bets.find({user : user}, function(err, data) {
+      var temp = {};
+      for(var i in data){
+        temp[data[i].matchId] ? temp[data[i].matchId].push(data[i]) : temp[data[i].matchId] = [data[i]];
+      }
+      callback(err, temp);
+    }).lean();
+  },
+  
   save : function(data, callback){
     
     var bet = {
@@ -45,7 +55,7 @@ var model = {
       updated : help.date('ms')
     }
     
-    model.Bets.update({matchId : data.matchId}, {$set :bet}, {upsert : true}, function(err, data) {
+    model.Bets.update({matchId : data.matchId}, {$set :bet}, {upsert : false}, function(err, data) {
       callback(err, data);
     });
   },

@@ -2,9 +2,9 @@
     <div class="td">
         <div class="right txt-xs txt-w clear spc-sm-t spc-xs-b brd-xs-b mrg-md-b">
             <span class="bg-s1 spc-sm rad-sm">{{=match.date}}</span>
-            {{? match.startMs}}
+            {{? match.startMs && !match.finished}}
                 {{var left = (match.startMs-it.ms)/1000;}}
-                <span class="bg-b spc-sm txt-w rad-sm time-left">{{= left<1 ?  'live' : left}}</span>
+                <span class="bg-b spc-sm txt-w rad-sm time-left txt-up">{{= left<1 ?  'live' : left}}</span>
             {{?}}
         </div>
     </div>
@@ -31,13 +31,13 @@
 <div class="txt-w tr align-m txt-xlg txt-oswald clear">
      <div class="td align-r col-6 bg-w spc-sm rad-sm-t1 brd-xs"
         {{? !match.finished}}
-            style="background: linear-gradient(to right, #ed9017 0%,#ffffff {{=match.t1.rate}},#ffffff 100%);"
+            style="background: linear-gradient(to right, #86c348 0%,#ffffff {{=match.t1.rate}},#ffffff 100%);"
         {{?}}>
         {{? winner}}
             {{? winner=='t1'}}
                 <h1 class="spc-md-l txt-up left txt-g">win <span class="txt-md">({{=match.t1.rate}})</span></h1>
             {{??}}
-                <h1 class="spc-md-l txt-up left txt-r">lose</h1>
+                <h1 class="spc-md-l txt-up left txt-red">lose</h1>
             {{?}}
         {{??}}
             <span class="txt-md spc-lg-t spc-lg-l txt-bold txt-w left">{{=match.t1.rate}}</span>
@@ -59,7 +59,7 @@
     </div>
     <div class="td align-l col-6 rad-sm-t2 bg-w spc-sm brd-xs" 
         {{? !match.finished}}
-            style="background: linear-gradient(to left, #ed9017 0%,#ffffff {{=match.t2.rate}},#ffffff 100%);"
+            style="background: linear-gradient(to left, #86c348 0%,#ffffff {{=match.t2.rate}},#ffffff 100%);"
         {{?}}>
         
         <img height="50" class="left rad-sm" src="{{=match.t2.img}}">

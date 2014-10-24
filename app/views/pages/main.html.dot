@@ -1,8 +1,17 @@
-<div class="clear sh-box-b-s1-l">
-    <div class="spc-md-tb spc-lg-l bg-w brd-xs-b brd-s1-l mrg-xs clear" style="box-shadow: 0 1px 0 #fff;">
-        <img class="left" src="http://s26.postimg.org/xojtodr3d/stattrackbets.png" height="100">
-        <div class="txt-oswald txt-s1 txt-lg left spc-lg">Sometimes you win. Sometimes you lose. Sometimes you letting others decide for you.<br>Sharing community.</div>
-        <img class="right spc-lg-r" src="http://s26.postimg.org/cnts3gnl5/bunny.png" height="100">
+<div class="w-max mrg-xs sh-box-b-s1-l brd-xs-b brd-w h-ml bg-stickers clear">
+    <div class="spc-lg mrg-xs brd-xs-b brd-s1-l clear">
+        <div class="col-3 left">
+            <img src="http://s26.postimg.org/xojtodr3d/stattrackbets.png" height="107">
+        </div>
+        <div class="txt-oswald txt-w txt-md left spc-lg-tb col-7">
+            <span>
+                Sometimes you win. Sometimes you lose. Sometimes you letting others decide for you.
+                <br>Sharing community.
+            </span>
+        </div>
+        <div class="right col-2">
+            <img src="http://s26.postimg.org/cnts3gnl5/bunny.png" height="107">
+        </div>
     </div>
 </div>
 

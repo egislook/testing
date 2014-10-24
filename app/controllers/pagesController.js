@@ -8,8 +8,11 @@ var Matches = require(process.cwd()+'/app/models/' + 'matches');
 var Bets = require(process.cwd()+'/app/models/' + 'bets');
 
 var users = {
-  'ofkys' : {
-    name : 'Ofkys'
+  'HeicPy' : {
+    name : 'HeicPy'
+  },
+  'zarna' : {
+    name : 'Zarna'
   }
 }
 
@@ -31,6 +34,35 @@ pagesController.main = function() {
     }
   );
 }
+
+pagesController.profile = function() {
+  var app=this,req=app.req,res=app.res;
+  var user = req.params.user || false;
+  if(user && users[user]){
+    async.waterfall(
+      [
+        function(callback){
+          Bets.returnByUser(user, function(err, bets){
+            callback(err, bets);
+          })
+        },
+        function(bets, callback){
+          Matches.returnByList(Object.keys(bets), function(err, matches){
+            callback(err, {bets : bets, matches : matches});
+          })
+        }
+      ],
+      function(err, results){
+        app.matches = err || results.matches;
+        app.bets = err || results.bets;
+        app.ms = help.date('ms')+7200000;
+        app.render();
+      }
+    );
+  } else res.send('no profile found')
+}
+
+
 
 pagesController.stats = function(){
   var app=this,req=app.req,res=app.res;
