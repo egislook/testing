@@ -7,9 +7,9 @@ var model = {
   Users : mongoose.model('Users', userSchema),
   
   return : function(callback){
-    model.Users.find({}, function(err, data) {
+    model.Users.find({}).sort({ "stats.win" : -1 , "stats.loss" : 1 }).lean().exec(function(err, data) {
       callback(err,  help.arrToObj(data, 'user'));
-    }).lean();
+    });
   },
   
   returnByUser : function(user, callback){
@@ -22,6 +22,10 @@ var model = {
     model.Users.count({user : user}, function(err, count){
       callback(err, count);
     })
+  },
+  
+  setStats : function(user, stats){
+    model.Users.update({user : user}, {$set : {stats : stats}}, function(){});
   }
   
 }

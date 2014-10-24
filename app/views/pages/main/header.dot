@@ -5,13 +5,21 @@
                 <img src="http://s26.postimg.org/xojtodr3d/stattrackbets.png" width="100%">
             </a>
         </div>
-        <div class="left col-4">
-            <img class="right" src="http://s26.postimg.org/5ywfexh0p/bunny.png" height="107">
+        <div class="left col-7 txt-oswald txt-w txt-lg spc-lg-tb align-c">
+                /*Sometimes you win. Sometimes you lose.*/
+            /*<img class="right" src="http://s26.postimg.org/5ywfexh0p/bunny.png" height="107">*/
         </div>
-        <div class="txt-oswald txt-w txt-lg right spc-lg-tb col-5 align-r">
-            <span>
-                Sometimes you win. Sometimes you lose.
-            </span>
+        <div class="txt-oswald txt-w txt-lg right col-2 align-r">
+            {{? it.users}}
+                {{for(var i in it.users) { }}
+                    {{var pot = it.users[i].stats.win - it.users[i].stats.loss;}}
+                    <div class="spc-xs spc-md-l mrg-xs-b align-l" style="background:#000; opacity:0.8">
+                        {{=it.users[i].name}}
+                        <span class="{{=pot<0 ? 'txt-red' : 'txt-g'}} right">{{=pot}} $</span>
+                    </div>
+                {{ } }}
+            {{?}}
+            
         </div>
     </div>
 </div>

@@ -8,6 +8,12 @@ var model = {
   
   return : function(callback){
     model.Bets.find({}, function(err, data) {
+      callback(err, data);
+    }).lean();
+  },
+  
+  returnSortedByMatch : function(callback){
+    model.Bets.find({}, function(err, data) {
       var temp = {};
       for(var i in data){
         temp[data[i].matchId] ? temp[data[i].matchId].push(data[i]) : temp[data[i].matchId] = [data[i]];

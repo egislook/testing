@@ -16,9 +16,11 @@ pagesController.main = function() {
   async.parallel(
     {
       matches : Matches.return,
-      bets : Bets.return
+      bets : Bets.returnSortedByMatch,
+      users : Users.return
     },
     function(err, results){
+      app.users = err || results.users;
       app.html = err || results.html;
       app.matches = err || results.matches;
       app.bets = err || results.bets;
@@ -103,9 +105,7 @@ pagesController.stats = function(){
               
             },function(err, results){
             });
-            
           }
-          
         });
         res.send({msg : 'bet saved', ok : true});
       } else res.send(a);
