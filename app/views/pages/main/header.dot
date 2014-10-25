@@ -1,15 +1,15 @@
 <div class="w-max sh-box-b-s1-l brd-xs-b brd-w h-ml bg-stickers clear">
-    <div class="h-ml spc-lg brd-xs-b brd-s1-l clear">
+    <div class="spc-lg brd-xs-b brd-s1-l clear">
         <div class="col-3 left">
             <a href="/">
-                <img src="http://s26.postimg.org/xojtodr3d/stattrackbets.png" width="100%">
+                <img src="http://s26.postimg.org/xojtodr3d/stattrackbets.png" width="30%">
             </a>
         </div>
         <div class="left col-7 txt-oswald txt-w txt-lg spc-lg-tb align-c">
                 /*Sometimes you win. Sometimes you lose.*/
             /*<img class="right" src="http://s26.postimg.org/5ywfexh0p/bunny.png" height="107">*/
         </div>
-        <div class="txt-oswald txt-w txt-lg right col-2 align-r">
+        <div class="txt-oswald txt-w txt-md right col-2 align-r">
             {{? it.users}}
                 {{for(var i in it.users) { }}
                     {{var pot = it.users[i].stats.win - it.users[i].stats.loss;}}

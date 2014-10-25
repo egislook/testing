@@ -82,11 +82,11 @@ pagesController.stats = function(){
           game.user = user;
           if(game.t1 && game.t2){
             var win = game.win;
-            
             async.parallel({
               
               bet : function(callback){
                 Bets.returnById(game, function(err, bet){
+                  console.log(bet);
                   if(bet && bet.win != win){
                     Bets.update(game, function(err){callback(err, {a : 'updated', d : bet})});
                   } else if(bet && bet.win == win) {
