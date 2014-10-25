@@ -56,12 +56,13 @@ var model = {
   },
   
   finished : function(data, callback){
+    //console.log(data);
     var bet = { 
       winner : data.winner || 'none',
       updated : help.date('ms')
     }
     
-    model.Bets.update({matchId : data.matchId}, {$set :bet}, {upsert : false}, function(err, data) {
+    model.Bets.update({matchId : data.matchId}, {$set :bet}, {upsert : false, multi: true}, function(err, data) {
       callback(err, data);
     });
   },

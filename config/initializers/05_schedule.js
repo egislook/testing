@@ -21,8 +21,9 @@ var update = function(){
                     console.log('upadet ' + games[i].matchId);
                     
                     Matches.finished(match, function(){});
-                    Bets.finished(match, function(){});
-                    statsUpdate();
+                    Bets.finished(match, function(){
+                        statsUpdate();
+                    });
                 }
             }
         })
@@ -46,6 +47,7 @@ var statsUpdate = function(){
         }
         
         for(var u in stats){
+            console.log('upadet user stats ' + u);
             Users.setStats(u, stats[u]);
         }
         
@@ -54,7 +56,6 @@ var statsUpdate = function(){
 
 module.exports = function() {
     update();
-    statsUpdate();
   repeat(600000, update);
 }
 
