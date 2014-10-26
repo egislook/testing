@@ -10,7 +10,7 @@ var model = {
   Matches : mongoose.model('Matches', matchSchema),
   
   return : function(callback){
-    model.Matches.find({}).lean().sort({date : -1, finished : 1}).exec(function(err, data) {
+    model.Matches.find({}).lean().sort({updated : -1, finished : 1}).exec(function(err, data) {
       callback(err, data);
     });
   },
@@ -140,8 +140,60 @@ var model = {
       }
       callback(err, matches);
     })
-  }
+  },
   
+  getHLTVstatistic : function(offset,callback){
+    var url = 'http://www.hltv.org/?pageid=188&gameid=2&offset='+offset;
+    var matches = matches ? matches : [];
+    var match = {};
+    var t1,t2;
+    var matchIndex = matchIndex ? matchIndex : 0;
+    var dataIndex = 0;
+      request(url,function(err,body){
+        if(!err && body && body.statusCode == 200){
+          var $ = cheerio.load(body.body);
+          var matchData = $('.covSmallHeadline')
+          var data;
+          matchData.map(function(i){
+            data = $(matchData[i].children).text();
+            if(i > 5){
+              switch(dataIndex){
+                case 0:
+                  match.date = data;
+                  break;
+                case 1:
+                  t1=data;
+                  match.t1 = data.substring(0,t1.indexOf('(')-1);
+                  break;
+                case 2:
+                  t2=data;
+                  match.t2 = data.substring(0,t2.indexOf('(')-1);
+                  break;
+                case 3:
+                  match.map = data;
+                  break;
+                case 4:
+                  match.event = data;
+                  match.t1Score = parseInt(t1.substring(t1.indexOf('(')+1,t1.indexOf(')')));
+                  match.t2Score = parseInt(t2.substring(t2.indexOf('(')+1,t2.indexOf(')')));
+                  match.winner = match.t1Score > match.t2Score ? match.t1 : match.t2;
+                  break;
+              }
+              if((i+5)%5 == 0){
+                dataIndex = 0;
+                matches[matchIndex++]=match;
+              }else
+                dataIndex++;
+            }
+          })
+        }
+        
+        callback(err, matches);
+      })
+      
+    //offset < 50 ? setTimeout(function(){model.getHLTVstatistic(offset+50,matches,matchIndex)}, 500) : false;
+  },
+
 }
 
 

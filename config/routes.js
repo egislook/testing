@@ -9,10 +9,15 @@
 var fb = require(process.cwd() + '/lib/fb.js');
 
 module.exports = function routes() {
+  
+  //this.get('/hltv', 'pages#hltv');
+  //this.get('/match/?(:id)?', 'pages#match');
+  
   this.get('/', 'pages#main');
   this.post('/stats', 'pages#stats');
-  //this.get('/match/?(:id)?', 'pages#match');
   this.get('/:user', 'pages#profile');
+  
+  
   
   //this.get('/auth/facebook', fb.redirect);
   //this.get('/auth/facebook/callback', fb.login);

@@ -8,8 +8,9 @@ var repeat = function(interval, fn){
 }
 
 var update = function(){
- Matches.returnUnfinished(function(err, games){
-     console.log('Checking unfinished games: ' + games.length+ ' matches.');
+    
+    Matches.returnUnfinished(function(err, games){
+    console.log('Checking unfinished games: ' + games.length+ ' matches.');
     if(games && games.length){
         Matches.getAllJson(function(err, data){
             var matches = help.arrToObj(data, 'matchId');

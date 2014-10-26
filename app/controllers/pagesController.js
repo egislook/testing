@@ -139,4 +139,12 @@ pagesController.match = function(){
   }
 }
 
+pagesController.hltv = function(){
+  var app=this,req=app.req,res=app.res;
+  var id = req.params.id || false;
+  Matches.getHLTVstatistic(0, function(err, data){
+    res.send(data);
+  });
+}
+
 module.exports = pagesController;
