@@ -70,7 +70,7 @@ pagesController.profile = function() {
 pagesController.stats = function(){
   var app=this,req=app.req,res=app.res;
   var games = JSON.parse(req.body.games);
-  var history = JSON.parse(req.body.history);
+  //var history = JSON.parse(req.body.history);
   var user = req.body.user || false;
   var ip = help.getIp(req);
   var a = {msg : 'server can not save data', ok : false};
