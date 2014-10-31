@@ -1,4 +1,5 @@
 var Matches = require(process.cwd()+'/app/models/' + 'matches');
+var HLTVstats = require(process.cwd()+'/app/models/' + 'HLTVstats');
 var Bets = require(process.cwd()+'/app/models/' + 'bets');
 var Users = require(process.cwd()+'/app/models/' + 'users');
 var help = require(process.cwd()+'/lib/' + 'help');
@@ -8,7 +9,7 @@ var repeat = function(interval, fn){
 }
 
 var update = function(){
-    
+    //HLTVstats.getHLTVstatistic();
     Matches.returnUnfinished(function(err, games){
     console.log('Checking unfinished games: ' + games.length+ ' matches.');
     if(games && games.length){

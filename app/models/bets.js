@@ -16,7 +16,17 @@ var model = {
     model.Bets.find({}, function(err, data) {
       var temp = {};
       for(var i in data){
-        temp[data[i].matchId] ? temp[data[i].matchId].push(data[i]) : temp[data[i].matchId] = [data[i]];
+        if(temp[data[i].matchId]){
+          temp[data[i].matchId][data[i].win] 
+            ? temp[data[i].matchId][data[i].win].push(data[i]) 
+            : temp[data[i].matchId][data[i].win] = [data[i]]
+        } else {
+          temp[data[i].matchId] = {};
+          temp[data[i].matchId][data[i].win] 
+            ? temp[data[i].matchId][data[i].win].push(data[i]) 
+            : temp[data[i].matchId][data[i].win] = [data[i]]
+        }
+        
       }
       callback(err, temp);
     }).lean();

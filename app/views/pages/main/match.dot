@@ -1,7 +1,7 @@
 <div class="tr">
     <div class="td">
-        <div class="right txt-xs txt-w clear spc-sm-t spc-xs-b brd-xs-b mrg-md-b">
-            <span class="bg-s1 spc-sm rad-sm">{{=match.date}}</span>
+        <div class="right txt-lg txt-w clear spc-sm-t spc-xs-b brd-xs-b mrg-md-b">
+            <span class="txt-xs bg-s1 spc-sm rad-sm">{{=match.date}}</span>
             {{? match.startMs && !match.finished}}
                 {{var left = (match.startMs-it.ms)/1000;}}
                 <span class="bg-b spc-sm txt-w rad-sm time-left txt-up">{{= left<1 ?  'live' : left}}</span>

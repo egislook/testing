@@ -1,18 +1,8 @@
-<div class="tr">
-    {{?bet.win=='t2'}}
-        <div class="td">
-        </div>
-        <div class="td">
-        </div>
-        <div class="td">
-        </div>
-        <div class="td">
-        </div>
-    {{?}}
-    <div class="td spc-lg-rl spc-xs-t mrg-xs-b txt-s2-l align-m">
+
+    <div class="spc-lg-rl spc-xs-t mrg-xs-b txt-s2-l align-m txt-oswald">
         <div class="spc-sm bg-s1-l rad-sm">
             <a href="/{{=bet.user}}">
-                <div class="spc-xs bt rad-sm bg-bl txt-w align-c">
+                <div class="spc-sm bt rad-sm bg-s2 txt-w align-c">
                     {{=bet.user}}
                 </div>
             </a>
@@ -32,4 +22,3 @@
             </div>
         </div>
     </div>
-</div>

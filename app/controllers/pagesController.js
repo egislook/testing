@@ -3,6 +3,7 @@ var locomotive = require('locomotive'),
   Controller = locomotive.Controller;
 
 var help = require(process.cwd()+'/lib/' + 'help');
+var HLTVstats = require(process.cwd()+'/app/models/' + 'HLTVstats');
 var pagesController = new Controller();
 var Matches = require(process.cwd()+'/app/models/' + 'matches');
 var Bets = require(process.cwd()+'/app/models/' + 'bets');
@@ -69,6 +70,7 @@ pagesController.profile = function() {
 pagesController.stats = function(){
   var app=this,req=app.req,res=app.res;
   var games = JSON.parse(req.body.games);
+  var history = JSON.parse(req.body.history);
   var user = req.body.user || false;
   var ip = help.getIp(req);
   var a = {msg : 'server can not save data', ok : false};
@@ -142,8 +144,10 @@ pagesController.match = function(){
 pagesController.hltv = function(){
   var app=this,req=app.req,res=app.res;
   var id = req.params.id || false;
-  Matches.getHLTVstatistic(0, function(err, data){
-    res.send(data);
+  HLTVstats.return(function(err, data){
+    app.stats = data[1].matches;
+    //console.log(data[1].matches.length)
+    app.render();
   });
 }
 

@@ -9,12 +9,27 @@
         <div class="spc-md {{= match.finished ? 'op-6' : ''}}">
             <div class="tb spc-md-b">
                 {{#def.loadfile('pages/main/match.dot')}}
+                <div class="tr">
+                    <div class="td t1">
+                        {{?it.bets[match.matchId] && it.bets[match.matchId].t1}}
+                            {{~it.bets[match.matchId].t1 :bet}}
+                                {{#def.loadfile('pages/main/bet.dot')}}
+                            {{~}}
+                        {{?}}
+                    </div>
+                    <div class="td"></div>
+                    <div class="td"></div>
+                    <div class="td"></div>
+                    <div class="td t2">
+                        {{?it.bets[match.matchId] && it.bets[match.matchId].t2}}
+                            {{~it.bets[match.matchId].t2 :bet}}
+                                {{#def.loadfile('pages/main/bet.dot')}}
+                            {{~}}
+                        {{?}}
+                    </div>
+                </div>
                 
-                {{?it.bets[match.matchId]}}
-                    {{~it.bets[match.matchId] :bet}}
-                        {{#def.loadfile('pages/main/bet.dot')}}
-                    {{~}}
-                {{?}}
+                
             </div>
         </div>
     {{~}}

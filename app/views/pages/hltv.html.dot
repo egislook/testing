@@ -1,0 +1,24 @@
+<table style="width:100%">
+  <tr>
+    <th>No.</th>
+    <th>Date</th>
+    <th>Teams</th>
+    <th>Score</th>
+    <th>Winner</th>
+    <th>Map</th>
+    <th>Event</th>
+  </tr>
+  {{ for(var i in it.stats) { }}
+    {{ var match = it.stats[i]; }}
+    
+    <tr>
+      <td><center>{{=i}}.</center></td>
+      <td><center>{{=match.date.day}}/{{=match.date.month}}/20{{=match.date.year}}</center></td>
+      <td><center>{{= match.t1}} VS {{=match.t2}}</center></td>
+      <td><center>{{=match.t1Score}}/{{=match.t2Score}}</center></td>
+      <td><center>{{=match.winner}}</center></td>
+      <td><center>{{=match.map}}</center></td>
+      <td><center>{{=match.event}}</center></td>
+    </tr>
+  {{ } }}
+</table>

@@ -7,7 +7,15 @@ var model = {
   Users : mongoose.model('Users', userSchema),
   
   return : function(callback){
-    model.Users.find({}).sort({ "stats.win" : -1 , "stats.loss" : 1 }).lean().exec(function(err, data) {
+    model.Users.find({}).sort({ "stats.win" : -1 }).lean().exec(function(err, data) {
+      var aDif = 0;
+      var bDif = 0;
+      data.sort(function(a, b){
+        aDif = a.stats.win - a.stats.loss;
+        bDif = b.stats.win - b.stats.loss;
+        return(aDif<bDif);
+      });
+      
       callback(err,  help.arrToObj(data, 'user'));
     });
   },

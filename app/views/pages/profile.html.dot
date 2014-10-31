@@ -12,7 +12,18 @@
                 
                 {{?it.bets[match.matchId]}}
                     {{~it.bets[match.matchId] :bet}}
-                        {{#def.loadfile('pages/main/bet.dot')}}
+                        {{?bet.win == 't2' }}
+                            <div class="td t1">
+                            </div>
+                            <div class="td"></div>
+                            <div class="td"></div>
+                            <div class="td"></div>
+                            <div class="td t2">
+                                {{#def.loadfile('pages/main/bet.dot')}}
+                            </div>
+                        {{??}}
+                            {{#def.loadfile('pages/main/bet.dot')}}
+                        {{?}}
                     {{~}}
                 {{?}}
             </div>
