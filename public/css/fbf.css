@@ -20,7 +20,7 @@ a:hover {
   cursor: pointer;
 }
 body {
-  background-color: #f7f7f7;
+  background-color: #0a0a0a;
   font-family: "Arial";
 }
 .input-group-elem {
@@ -162,7 +162,6 @@ body {
   background-color: #b3b3b3;
 }
 /*border*/
-.brd-xs {
   border: solid 1px #ffffff;
 }
 .brd-neutral {

@@ -1,4 +1,29 @@
-<table style="width:100%">
+<div style="background:white;">
+<br>
+<br>
+<center>
+<div style="background:gray;width:500px;padding:15px;">
+{{? it.teams}}
+  <select class="teams">
+    <option></option>
+    {{~ it.teams:t}}
+      <option {{?it.query[0]==t}}selected{{?}}>{{=t}}</option>
+    {{~}}
+  </select>
+   VS  
+  <select class="teams">
+    <option></option>
+    {{~ it.teams:t}}
+      <option {{?it.query[1]==t}}selected{{?}}>{{=t}}</option>
+    {{~}}
+  </select>
+  <button onclick="showSpecific(this,event);">Show</button>
+{{?}}
+</div>
+</center>
+<br>
+<br>
+<table class="matches" style="width:100%;">
   <tr>
     <th>No.</th>
     <th>Date</th>
@@ -12,7 +37,7 @@
     {{ var match = it.stats[i]; }}
     
     <tr>
-      <td><center>{{=i}}.</center></td>
+      <td><center>{{=parseInt(i)+1}}.</center></td>
       <td><center>{{=match.date.day}}/{{=match.date.month}}/20{{=match.date.year}}</center></td>
       <td><center>{{= match.t1}} VS {{=match.t2}}</center></td>
       <td><center>{{=match.t1Score}}/{{=match.t2Score}}</center></td>
@@ -22,3 +47,4 @@
     </tr>
   {{ } }}
 </table>
+</div>

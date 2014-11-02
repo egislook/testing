@@ -78,6 +78,5 @@ var model = {
   }
   
 }
-// netrynk dar kolkas :D
 
 module.exports = model;

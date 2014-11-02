@@ -11,6 +11,7 @@ var fb = require(process.cwd() + '/lib/fb.js');
 module.exports = function routes() {
   
   this.get('/hltv', 'pages#hltv');
+  this.post('/show', 'pages#show');
   //this.get('/match/?(:id)?', 'pages#match');
   
   this.get('/', 'pages#main');

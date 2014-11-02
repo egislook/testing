@@ -70,10 +70,11 @@ pagesController.profile = function() {
 pagesController.stats = function(){
   var app=this,req=app.req,res=app.res;
   var games = JSON.parse(req.body.games);
-  //var history = JSON.parse(req.body.history);
   var user = req.body.user || false;
   var ip = help.getIp(req);
   var a = {msg : 'server can not save data', ok : false};
+  
+  console.log('just got some data');
   
   if(user){
     
@@ -143,10 +144,22 @@ pagesController.match = function(){
 
 pagesController.hltv = function(){
   var app=this,req=app.req,res=app.res;
-  var id = req.params.id || false;
+  var match, teams = [];
+  var isQuery = Object.getOwnPropertyNames(req.query).length > 0 ? true : false;
+  var showTeams = req.query.teams && Array.isArray(req.query.teams) ? req.query.teams : [];
+  app.query = showTeams;
+  app.stats = [];
   HLTVstats.return(function(err, data){
-    app.stats = data[1].matches;
-    //console.log(data[1].matches.length)
+    var allMatches = data[1].matches;
+    for(var i in allMatches){
+      match = allMatches[i];
+      teams.indexOf(match.t1.trim())==-1 ? teams.push(match.t1.trim()) : false;
+      teams.indexOf(match.t2.trim())==-1 ? teams.push(match.t2.trim()) : false;
+      isQuery && showTeams.indexOf(match.t1.trim())!=-1 ? app.stats.push(match) 
+        : showTeams.indexOf(match.t2.trim())!=-1 ? app.stats.push(match) :  false;
+    }
+    app.teams = teams.sort();
+    !isQuery ? app.stats = data[1].matches : false;
     app.render();
   });
 }

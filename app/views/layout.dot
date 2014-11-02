@@ -1,9 +1,10 @@
 <html>
 	<head>
-		<link rel="stylesheet" type="text/css" href="/css/default.css">
 		<link rel="stylesheet" type="text/css" href="/css/fbf.css">
+		<link rel="stylesheet" type="text/css" href="/css/default.css">
+		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
 	</head>
-	<body>
+	<body class="texture-d">
 	    {{? it.settings.env === 'development' && false }}
 	        {{#def.loadfile('_comp/data.dot')}}
     	{{?}}

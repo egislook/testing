@@ -26,17 +26,8 @@
 .brd-md {
   border: 5px solid #212121;
 }
-.brd-b1 {
-  border-color: #0a0a0a;
-}
-.brd-d-d {
-  border-color: #212121;
-}
 .txt-sh-d-l {
   text-shadow: 0px 4px #2b2b2b;
-}
-.txt-bl1 {
-  color: #6bcbca;
 }
 .texture-d {
   background-image: url('http://subtlepatterns.com/patterns/zwartevilt.png');

@@ -18,7 +18,7 @@
     "request" : "*"
   },
   "scripts": {
-    "start": "nodemon server.js --env 'development'"
+    "start": "nodemon -e less,js --ignore '/public' server.js --env 'development'"
   },
   "devDependencies": {
       "nodemon": "*"

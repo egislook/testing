@@ -1,0 +1,33 @@
+<div class="spc-xs-t mrg-xs-b mrg-xs-r txt-oswald">
+    <div class="spc-sm bg-d-d clear">
+        <a href="/{{=bet.user}}">
+            <div class="spc-md bt txt-w col-3 left align-l">
+                {{=bet.user}}
+            </div>
+        </a>
+        <div class="col-5 left">
+            <div class="fa fa-chevron-right txt-b1 spc-ml-t spc-ml-rl txt-sh-d-l left"></div>
+          {{?bet.items}}
+              {{~bet.items :item}}
+                <a target="blank" href="http://steamcommunity.com/market/listings/730/{{=item.name}}">
+                  <div class="left align-c spc-xs-r bg-b1">
+                      <img src="{{=item.img}}" height="30">
+                      <div class="txt-xs bg-d-l txt-s2-l">{{=item.value}}$</div>
+                  </div>
+                </a>
+              {{~}}
+          {{?}}
+        </div>
+        <div class="left col-4">
+            <div class="txt-s2-d align-r spc-sm brd-xs brd-s2-l right">
+                <div class="txt-s1-d">{{=bet.pot || ''}}$</div>
+                <div class="txt-xs txt-s2-l">Potential reward</div>
+            </div>
+            <div class="fa fa-chevron-right txt-b1 right spc-ml-t spc-ml-rl txt-sh-d-l"></div>
+            <div class="txt-s2-d align-r spc-sm brd-xs brd-b right">
+                <div class="txt-w">{{=bet.value.toFixed(2) || ''}}$</div>
+                <div class="txt-xs txt-s2-l">Bet value</div>
+            </div>
+        </div>
+    </div>
+</div>

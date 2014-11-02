@@ -19,7 +19,7 @@ module.exports = function() {
   var fs      = require('fs');
   var less    = require('less');
 
-  if(this.env == 'development' && false){
+  if(this.env == 'development' && true){
     fs.readFile(dir + '_styles/styles.less', function(err,styles) {
         console.log(__dirname);
         if(err) return console.error('Less MSG <> Could not open file: %s',err);

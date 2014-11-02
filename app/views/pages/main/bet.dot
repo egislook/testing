@@ -1,24 +1,25 @@
-
-    <div class="spc-lg-rl spc-xs-t mrg-xs-b txt-s2-l align-m txt-oswald">
-        <div class="spc-sm bg-s1-l rad-sm">
-            <a href="/{{=bet.user}}">
-                <div class="spc-sm bt rad-sm bg-s2 txt-w align-c">
-                    {{=bet.user}}
-                </div>
-            </a>
-            <div class="clear">
-                {{?bet.items}}
-                    {{~bet.items :item}}
-                        <div class="left align-c spc-xs-r">
-                            <img src="{{=item.img}}" height="40">
-                            <div class="txt-xs bg-s1">{{=item.value}}$</div>
-                        </div>
-                    {{~}}
-                    <div class="spc-lg-t txt-s2-d right">
-                        <span class="txt-xs txt-s2-l">Possible win value:</span>
-                        <span class="bg-b txt-w rad-sm spc-sm">{{=bet.pot || ''}}$</span>
-                    </div>
-                {{?}}
+<div class="spc-xs-t mrg-xs-b mrg-xs-r txt-oswald">
+    <div class="spc-sm bg-d-d clear">
+        <a href="/{{=bet.user}}">
+            <div class="spc-md-t bt txt-w col-4 right align-r">
+                {{=bet.user}}
             </div>
+        </a>
+        <div class="fa fa-chevron-left txt-b1 spc-ml-t spc-md-rl txt-sh-d-l col-1 right"></div>
+        <div class="col-4 right">
+          {{?bet.items}}
+              {{~bet.items :item}}
+                  <div class="left align-c spc-xs-r">
+                      <img src="{{=item.img}}" height="30">
+                      <div class="txt-xs bg-d-l txt-s2-l">{{=item.value}}$</div>
+                  </div>
+              {{~}}
+          {{?}}
+        </div>
+        <div class="fa fa-chevron-left txt-b1 right spc-ml-t spc-md-rl txt-sh-d-l col-1"></div>
+        <div class="txt-s2-d align-r spc-sm brd-xs brd-b1 right col-2">
+            <div class="txt-s1">{{=bet.pot || ''}}$</div>
+            <div class="txt-xs txt-s2-l">Potential reward</div>
         </div>
     </div>
+</div>
