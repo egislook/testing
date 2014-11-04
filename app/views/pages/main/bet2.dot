@@ -1,4 +1,4 @@
-<div class="spc-xs-t mrg-xs-b mrg-xs-r txt-oswald">
+<div class="spc-xs-t mrg-xs-r txt-oswald">
     <div class="spc-sm bg-d-d clear">
         <a href="/{{=bet.user}}">
             <div class="spc-md bt txt-w col-3 left align-l">
@@ -10,7 +10,7 @@
           {{?bet.items}}
               {{~bet.items :item}}
                 <a target="blank" href="http://steamcommunity.com/market/listings/730/{{=item.name}}">
-                  <div class="left align-c spc-xs-r bg-b1">
+                  <div class="left align-c mrg-xs-r bg-b1">
                       <img src="{{=item.img}}" height="30">
                       <div class="txt-xs bg-d-l txt-s2-l">{{=item.value}}$</div>
                   </div>

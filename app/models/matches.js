@@ -10,7 +10,7 @@ var model = {
   Matches : mongoose.model('Matches', matchSchema),
   
   return : function(callback){
-    model.Matches.find({}).lean().sort({finished : 1, startMs : 1}).exec(function(err, data) {
+    model.Matches.find({}).lean().sort({finished : 1, startMs : -1}).exec(function(err, data) {
       callback(err, data);
     });
   },

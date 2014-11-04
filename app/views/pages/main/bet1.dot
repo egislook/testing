@@ -1,4 +1,4 @@
-<div class="spc-xs-t mrg-xs-b mrg-xs-r txt-oswald">
+<div class="spc-xs-t mrg-xs-r txt-oswald">
     <div class="spc-sm bg-d-d clear">
         <a href="/{{=bet.user}}">
             <div class="spc-md bt txt-w col-3 right align-r">
