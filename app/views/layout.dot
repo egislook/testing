@@ -3,6 +3,7 @@
 		<link rel="stylesheet" type="text/css" href="/css/fbf.css">
 		<link rel="stylesheet" type="text/css" href="/css/default.css">
 		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	</head>
 	<body class="texture-d">
 	    {{? it.settings.env === 'development' && false }}

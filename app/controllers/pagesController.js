@@ -145,7 +145,7 @@ pagesController.match = function(){
 pagesController.hltv = function(){
   var app=this,req=app.req,res=app.res;
   var match, teams = [];
-  var isQuery = Object.getOwnPropertyNames(req.query).length > 0 ? true : false;
+  var isQuery = Object.getOwnPropertyNames(req.query).length;
   var showTeams = req.query.teams && Array.isArray(req.query.teams) ? req.query.teams : [];
   app.query = showTeams;
   app.stats = [];
