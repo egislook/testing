@@ -136,7 +136,7 @@ pagesController.match = function(){
       }
       
       Matches.returnUnfinished(function(err, games){
-        res.send(games);
+        res.send({games : games, matches : matches});
       })
     })
   }

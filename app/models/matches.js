@@ -125,7 +125,7 @@ var model = {
             match = {
               time : game.find('.whenm').eq(0).text(),
               matchId : game.find('a').attr('href').split('?m=')[1],
-              finished : game.find('.notaviable').length ? true : false
+              finished : game.find('.notavailable').length ? true : false
             }
             
             if(!match.aviable && game.find('img').length){
