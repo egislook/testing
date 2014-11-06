@@ -74,7 +74,7 @@ var model = {
     request(url,function(err,body){
       if(!err && body && body.statusCode == 200){
         var $ = cheerio.load(body.body);
-        var cont = $('.gradient').eq(0);
+        var cont = $('.box-shiny-alt').eq(0);
         var halfs = cont.find('.half');
         var teams = cont.find('.team');
         
