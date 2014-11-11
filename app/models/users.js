@@ -7,7 +7,7 @@ var model = {
   Users : mongoose.model('Users', userSchema),
   
   return : function(callback){
-    model.Users.find({}).sort({ "stats.win" : -1 }).lean().exec(function(err, data) {
+    model.Users.find({}).sort().lean().exec(function(err, data) {
       var aDif = 0;
       var bDif = 0;
       data.sort(function(a, b){
