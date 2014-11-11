@@ -35,5 +35,5 @@ function showSpecific(){
     var t2 = selects[1].options[selects[1].selectedIndex].value;
     t1 ? query += '?teams[]='+t1 : false;
     t1 && t2 ? query += '&teams[]='+t2 : t2 ? query += '?teams[]='+t2 : false;
-    window.location.replace("https://stattrack-c9-noneede.c9.io/hltv"+query);
+    window.location.replace(window.location.pathname+query);
 }

@@ -25,7 +25,7 @@ pagesController.main = function() {
       app.html = err || results.html;
       app.matches = err || results.matches;
       app.bets = err || results.bets;
-      app.ms = help.date('ms')+7200000;
+      app.ms = help.date('ms')+3600000;
       app.render();
     }
   );
