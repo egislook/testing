@@ -81,7 +81,7 @@ pagesController.stats = function(){
   if(user){
     
     Users.returnByUser(user, function(err, userData){
-      if(userData && ( (userData.ips && userData.ips.indexOf(ip)!=-1) || !userData.ips )){
+      if(userData && ( userData.ips == false || (userData.ips && userData.ips.indexOf(ip)!=-1) )){
         games.forEach(function(game) {
           
           game.user = user;
