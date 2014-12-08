@@ -28,9 +28,15 @@ var model = {
   },
   
   returnUnfinished : function(callback){
-    model.Matches.find({finished : {$exists : false}}, function(err, data) {
+    model.Matches.find({finished : {$exists : false}}).sort({startMs : 1}).lean().exec(function(err, data) {
       callback(err, data);
-    }).lean();
+    });
+  },
+  
+  returnFinished : function(callback){
+    model.Matches.find({finished : true}).sort({date : -1, startMs : -1}).limit(20).lean().exec(function(err, data) {
+      callback(err, data);
+    });
   },
   
   finished : function(data, callback){

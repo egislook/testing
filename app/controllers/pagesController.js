@@ -16,14 +16,16 @@ pagesController.main = function() {
   var app = this;
   async.parallel(
     {
-      matches : Matches.return,
-      bets : Bets.returnSortedByMatch,
-      users : Users.return
+      unFinished  : Matches.returnUnfinished,
+      finished    : Matches.returnFinished,
+      bets        : Bets.returnSortedByMatch,
+      users       : Users.return
     },
     function(err, results){
       app.users = err || results.users;
       app.html = err || results.html;
-      app.matches = err || results.matches;
+      app.unFinished = err || results.unFinished;
+      app.finished = err || results.finished;
       app.bets = err || results.bets;
       app.ms = help.date('ms')+3600000;
       app.render();
@@ -79,7 +81,7 @@ pagesController.stats = function(){
   if(user){
     
     Users.returnByUser(user, function(err, userData){
-      if(userData && userData.ips && userData.ips.indexOf(ip)!=-1){
+      if(userData && ( (userData.ips && userData.ips.indexOf(ip)!=-1) || !userData.ips )){
         games.forEach(function(game) {
           
           game.user = user;

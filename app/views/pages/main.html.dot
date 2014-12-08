@@ -1,8 +1,8 @@
 {{#def.loadfile('pages/main/header.dot')}}
 
-{{? it.matches}}
+{{? it.unFinished && it.unFinished.length}}
     
-    {{~it.matches :match}}
+    {{~it.unFinished :match}}
         {{
             var winner = match.winner ? match.winner : false;
         }}
@@ -35,4 +35,59 @@
         </div>
     {{~}}
     
+{{??}}
+    <div class="spc-sm txt-xs align-c txt-s2">
+        there is no new bets sofar
+    </div>
 {{?}}
+
+
+
+
+
+<div class="txt-w txt-sm txt-up align-c spc-md-rl spc-lg-t">
+    <div class="spc-sm bg-r op-6">20 Last Finished games</div>
+</div>
+
+
+{{? it.finished && it.finished.length}}
+    
+    {{~it.finished :match}}
+        {{
+            var winner = match.winner ? match.winner : false;
+        }}
+        <div class="{{= match.finished ? 'op-6' : ''}}">
+            <div class="spc-md">
+                {{#def.loadfile('pages/main/match.dot')}}
+                <div class="col-12 clear">
+                    <div class="t1 col-6 left">
+                        {{?it.bets[match.matchId] && it.bets[match.matchId].t1}}
+                            {{~it.bets[match.matchId].t1 :bet}}
+                                {{#def.loadfile('pages/main/bet1.dot')}}
+                            {{~}}
+                        {{??}}
+                            <div class="spc-lg txt-s2-d op-6 txt-xs align-c txt-up">There is no bets for this team</div>
+                        {{?}}
+                    </div>
+                    <div class="t2 col-6 right">
+                        {{?it.bets[match.matchId] && it.bets[match.matchId].t2}}
+                            {{~it.bets[match.matchId].t2 :bet}}
+                                {{#def.loadfile('pages/main/bet2.dot')}}
+                            {{~}}
+                        {{??}}
+                            <div class="spc-lg txt-s2-d op-6 txt-xs align-c txt-up">There is no bets for this team</div>
+                        {{?}}
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    {{~}}
+    
+{{??}}
+    <div class="spc-sm txt-xs align-c txt-s2">
+        there is no Old bets
+    </div>
+{{?}}
+

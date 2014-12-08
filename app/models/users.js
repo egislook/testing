@@ -8,12 +8,8 @@ var model = {
   
   return : function(callback){
     model.Users.find({}).sort().lean().exec(function(err, data) {
-      var aDif = 0;
-      var bDif = 0;
       data.sort(function(a, b){
-        aDif = a.stats.win - a.stats.loss;
-        bDif = b.stats.win - b.stats.loss;
-        return(aDif<bDif);
+        return(b.stats.balance - a.stats.balance);
       });
       
       callback(err,  help.arrToObj(data, 'user'));
