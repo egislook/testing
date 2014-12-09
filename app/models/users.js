@@ -7,10 +7,7 @@ var model = {
   Users : mongoose.model('Users', userSchema),
   
   return : function(callback){
-    model.Users.find({}).sort().lean().exec(function(err, data) {
-      data.sort(function(a, b){
-        return(b.stats.balance - a.stats.balance);
-      });
+    model.Users.find({}).sort({"stats.balance" : -1}).lean().exec(function(err, data) {
       
       callback(err,  help.arrToObj(data, 'user'));
     });
