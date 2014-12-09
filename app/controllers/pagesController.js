@@ -14,6 +14,7 @@ pagesController.main = function() {
   this.title = 'Stat Track';
   
   var app = this;
+  app.games = app.__app.games;
   async.parallel(
     {
       unFinished  : Matches.returnUnfinished,

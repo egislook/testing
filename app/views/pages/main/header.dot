@@ -1,8 +1,14 @@
 <div class="w-max sh-box-b-s1-l brd-xs-b brd-d-d bg-stickers clear">
     <div class="spc-lg brd-xs-b brd-b1 clear">
         <div class="col-4 left align-c">
+            <div class="txt-w txt-w spc-sm txt-xs">Our small betting community.</div>
+            <a href="/">
+                <div class="brd-xs brd-w">
+                    <h1 class="txt-oswald txt-w">Go Big or Go Home.</h1>
+                </div>
+            </a>
             <div class="align-l op-8">
-                <div class="spc-xs-b">
+                <div class="spc-xs-b spc-xs-t">
                     <a target="_blank" href="https://chrome.google.com/webstore/detail/wdpwp-bettrack/naimocokmoolndojocncllmpbgoipeem">
                         <div class="txt-s2 spc-sm bg-w inline bt">Download chrome extension</div>
                     </a>
@@ -18,13 +24,13 @@
                     </a>
                 </div>
             </div>
-            <a href="/">
-                <div class="brd-xs brd-w">
-                    <h1 class="txt-oswald txt-w">Go Big or Go Home.</h1>
-                </div>
-                <div class="txt-w txt-w spc-sm txt-xs">Our small betting community.</div>
-            </a>
+            <div class="spc-lg-tb">
+                {{~ it.games :match}}
+                    {{#def.loadfile('pages/main/game.dot')}}
+                {{~}}
+            </div>
         </div>
+        
         <div class="txt-oswald txt-w txt-md right col-2 align-r">
             {{? it.users}}
                 {{for(var i in it.users) { }}

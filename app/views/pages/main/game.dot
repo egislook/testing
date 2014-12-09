@@ -1,0 +1,34 @@
+<div class="spc-xs clear op-8 txt-oswald mrg-xs-b" style="background:#000;">
+    <a target="_blank" href="http://csgolounge.com/match?m={{=match.matchId}}">
+        <div class="col-5 left">
+            <div class="align-l spc-xs clear" 
+                {{? !match.finished}}
+                    style="background: linear-gradient(to right, {{= parseInt(match.t2.rate)>parseInt(match.t1.rate) ? '#ff6867' : '#4da9a8'}} 0%,transparent {{=match.t1.rate}},transparent 100%);"
+                {{?}}>
+                <span class="txt-xs spc-xs txt-bold txt-w left">{{=match.t1.rate}}</span>
+                
+                <img height="20" class="right brd-sm" src="{{=match.t1.img}}">
+                <h2 class="right txt-w txt-sm spc-xs spc-md-r">{{=match.t1.name}}</h2>
+                
+            </div>
+        </div>
+        
+        <div class="col-2 left align-c">
+            <div class="clear">
+                <span class="txt-xs txt-w">after {{= match.time}}</span>
+            </div>
+        </div>
+        
+        <div class="col-5 left">
+            <div class="align-l clear sps-xs" 
+                {{? !match.finished}}
+                    style="background: linear-gradient(to left, {{= parseInt(match.t2.rate)<parseInt(match.t1.rate) ? '#ff6867' : '#4da9a8'}} 0%,transparent {{=match.t2.rate}},transparent 100%);"
+                {{?}}>
+                
+                <img height="20" class="left brd-sm spc-xs" src="{{=match.t2.img}}">
+                <h2 class="left txt-w txt-sm spc-md-l spc-xs">{{=match.t2.name}}</h2>
+                <span class="txt-xs txt-bold txt-w right spc-xs">{{=match.t2.rate}}</span>
+            </div>
+        </div>
+    </a>
+</div>

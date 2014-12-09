@@ -54,6 +54,15 @@ var model = {
     });
   },
   
+  update : function(data, callback){
+    data.date = help.date();
+    data.updated = help.date('ms');
+    delete data.finished;
+    model.Matches.update({matchId : data.matchId}, {$set : data}, {}, function(err, data) {
+      callback(err, data);
+    });
+  },
+  
   data : function(id, callback){
     model.returnById(id, function(err,data){
       if(!err && data){
@@ -131,7 +140,17 @@ var model = {
             match = {
               time : game.find('.whenm').eq(0).text(),
               matchId : game.find('a').attr('href').split('?m=')[1],
-              finished : game.find('.notavailable').length ? true : false
+              finished : game.find('.notavailable').length ? true : false,
+              t1 : {
+                name : game.find('.teamtext').eq(0).find('b').text(),
+                rate : game.find('.teamtext').eq(0).find('i').text(),
+                img : game.find('.team').eq(0).css('background').split("'")[1]
+              },
+              t2 : {
+                name : game.find('.teamtext').eq(1).find('b').text(),
+                rate : game.find('.teamtext').eq(1).find('i').text(),
+                img : game.find('.team').eq(1).css('background').split("'")[1]
+              }
             }
             
             if(!match.aviable && game.find('img').length){

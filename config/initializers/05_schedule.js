@@ -4,11 +4,40 @@ var Bets = require(process.cwd()+'/app/models/' + 'bets');
 var Users = require(process.cwd()+'/app/models/' + 'users');
 var help = require(process.cwd()+'/lib/' + 'help');
 
+
 var repeat = function(interval, fn){
     setTimeout(function(){fn();repeat(interval,fn)}, interval);
 }
 
-var update = function(){
+var update = function(app){
+    
+    Matches.getAllJson(function(err, data){
+        Matches.returnUnfinished(function(err, games){
+            console.log('Checking unfinished games: ' + games.length+ ' matches.');
+            games = help.arrToObj(games, 'matchId');
+            app.games = [];
+           for(var i in data){
+               var match = data[i];
+               if(!match.finished){
+                   Matches.update(match, function(){});
+                   app.games ? app.games.push(match) : app.games = [match];
+               } else {
+                   if(games[match.matchId]){
+                        delete match.time;
+                        
+                        Matches.finished(match, function(){});
+                        Bets.finished(match, function(){
+                            statsUpdate();
+                        });
+                   }
+               }
+            } 
+           setTimeout(function(){update(app)}, 600000); 
+        });
+    })
+}
+
+/*var update = function(){
     //HLTVstats.getHLTVstatistic();
     Matches.returnUnfinished(function(err, games){
     console.log('Checking unfinished games: ' + games.length+ ' matches.');
@@ -31,7 +60,7 @@ var update = function(){
         })
     }
  })
-}
+}*/
 
 var statsUpdate = function(){
     Bets.return(function(err, bets){
@@ -58,8 +87,7 @@ var statsUpdate = function(){
 }
 
 module.exports = function() {
-    //statsUpdate();
-    update();
-  repeat(600000, update);
+    update(this);
+  //repeat(10000, update(app));
 }
 
