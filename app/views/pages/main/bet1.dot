@@ -1,7 +1,7 @@
 <div class="spc-xs-t mrg-xs-r txt-oswald">
     <div class="spc-sm bg-d-d clear">
         <a href="/{{=bet.user}}">
-            <div class="spc-md bt txt-w col-3 right align-r">
+            <div class="spc-md bt txt-w col-3 right align-r brd-xs brd-b">
                 {{=bet.user}}
             </div>
         </a>
@@ -12,22 +12,37 @@
                 <a target="blank" href="http://steamcommunity.com/market/listings/730/{{=item.name}}">
                   <div class="right align-c mrg-xs-r bg-b1">
                       <img src="{{=item.img}}" height="30">
-                      <div class="txt-xs bg-d-l txt-s2-l">{{=item.value}}$</div>
+                      <div class="txt-xs {{= winner == 't2' ? 'bg-r txt-w' : winner == 't1' ? 'bg-s1 txt-b' : 'bg-d-l txt-s2-l'}}">{{=item.value}}$</div>
                   </div>
                 </a>
               {{~}}
           {{?}}
         </div>
         <div class="right col-4">
-            <div class="txt-s2-d align-r spc-sm brd-xs brd-b left">
+          {{? winner == 't2'}}
+            <div class="align-r spc-sm bg-b1 txt-red left">
+                <div>{{=bet.value.toFixed(2) || ''}}$</div>
+                <div class="txt-xs">Lost value</div>
+            </div>
+            <div class="fa fa-chevron-left txt-b1 left spc-ml-t spc-ml-rl txt-sh-d-l"></div>
+          {{?? winner == 't1'}}
+            <div class="align-r spc-sm bg-b1 txt-g left">
+                <div>{{=bet.pot || ''}}$</div>
+                <div class="txt-xs">Reward value</div>
+            </div>
+            <div class="fa fa-chevron-left txt-b1 left spc-ml-t spc-ml-rl txt-sh-d-l"></div>
+          {{??}}
+            <div class="txt-s2-d align-r spc-sm bg-b1 left">
                 <div class="txt-s1-d">{{=bet.pot || ''}}$</div>
                 <div class="txt-xs txt-s2-l">Potential reward</div>
             </div>
             <div class="fa fa-chevron-left txt-b1 left spc-ml-t spc-ml-rl txt-sh-d-l"></div>
-            <div class="txt-s2-d align-r spc-sm brd-xs brd-b left">
-                <div class="txt-w">{{=bet.value.toFixed(2) || ''}}$</div>
-                <div class="txt-xs txt-s2-l">Bet value</div>
+          
+            <div class="align-r spc-sm bg-d-l txt-s2-l left">
+                <div class="txt-s1-d">{{=bet.value.toFixed(2) || ''}}$</div>
+                <div class="txt-xs">Value on card</div>
             </div>
+          {{?}}
         </div>
     </div>
 </div>

@@ -3,14 +3,14 @@
         <div class="col-5 left">
             <div class="align-l spc-sm clear" 
                 {{? !match.finished}}
-                    style="background: linear-gradient(to right, #4da9a8 0%,transparent {{=match.t1.rate}},transparent 100%);"
+                    style="background: linear-gradient(to right, {{= parseInt(match.t2.rate)>parseInt(match.t1.rate) ? '#ff6867' : '#4da9a8'}} 0%,transparent {{=match.t1.rate}},transparent 100%);"
                 {{?}}>
                 
                 {{? winner}}
                     {{? winner=='t1'}}
                         <h2 class="spc-md-l txt-up left txt-g">win <span class="txt-md">({{=match.t1.rate}})</span></h2>
                     {{??}}
-                        <h2 class="spc-md-l txt-up left txt-red">loss</h1>
+                        <h2 class="spc-md-l txt-up left txt-red">loss <span class="txt-md">({{=match.t1.rate}})</span></h1>
                     {{?}}
                 {{??}}
                     <span class="txt-md spc-md txt-bold txt-w left">{{=match.t1.rate}}</span>
@@ -27,10 +27,10 @@
                 {{var left = (match.startMs-it.ms)/1000;}}
                 <div class="txt-lg {{= left<1 ?  'txt-g' : 'txt-w'}} time-left txt-up">{{= left<1 ?  'live' : left}}</div>
             {{??}}
-                <div class="txt-lg txt-s1 txt-up">finished</div>
+                <div class="txt-lg txt-s1 txt-up">{{=match.date}}</div>
             {{?}}
             <div class="clear">
-                <span class="txt-xs txt-s2">{{=match.date}}</span>
+                <span class="txt-xs txt-s2 txt-up">{{= match.finished ? 'finished ' : match.date}}</span>
                 <span class="txt-s2 txt-xs spc-sm-rl">/</span>
                 <span class="txt-xs txt-s2">{{=match.games}}</span>
             </div>
@@ -39,16 +39,16 @@
         <div class="col-5 left">
             <div class="align-l spc-sm clear" 
                 {{? !match.finished}}
-                    style="background: linear-gradient(to left, #ff6867 0%,transparent {{=match.t2.rate}},transparent 100%);"
+                    style="background: linear-gradient(to left, {{= parseInt(match.t2.rate)<parseInt(match.t1.rate) ? '#ff6867' : '#4da9a8'}} 0%,transparent {{=match.t2.rate}},transparent 100%);"
                 {{?}}>
                 
                 <img height="35" class="left brd-md" src="{{=match.t2.img}}">
                 <h2 class="left txt-w spc-md-l">{{=match.t2.name}}</h2>
                 {{? winner}}
                     {{? winner=='t2'}}
-                        <h2 class="spc-md-r txt-up right txt-g">win <span class="txt-md">({{=match.t2.rate}})</span></h2>
+                        <h2 class="spc-md-r txt-up right txt-g"><span class="txt-md">({{=match.t2.rate}})</span> win</h2>
                     {{??}}
-                        <h2 class="spc-md-r txt-up right txt-red">loss</h2>
+                        <h2 class="spc-md-r txt-up right txt-red"><span class="txt-md">({{=match.t2.rate}})</span> loss</h2>
                     {{?}}
                     
                 {{??}}
@@ -58,84 +58,3 @@
         </div>
     </a>
 </div>
-
-
-
-/*<div class="tr">
-    <div class="td">
-        <div class="right txt-lg txt-w clear spc-sm-t spc-xs-b brd-xs-b mrg-md-b">
-            <span class="txt-xs bg-s1 spc-sm rad-sm">{{=match.date}}</span>
-            {{? match.startMs && !match.finished}}
-                {{var left = (match.startMs-it.ms)/1000;}}
-                <span class="bg-b spc-sm txt-w rad-sm time-left txt-up">{{= left<1 ?  'live' : left}}</span>
-            {{?}}
-        </div>
-    </div>
-    <div class="td">
-        <div class="line-h bg-s1 col-12"></div>
-        <div class="line-v center line-h-md"></div>
-    </div>
-    <div class="td">
-        <div class="line-h bg-s1 col-12"></div>
-        <div class="line-v bg-s1 center line-h-md"></div>
-    </div>
-    <div class="td">
-        <div class="line-h bg-s1 col-12"></div>
-        <div class="line-v center line-h-md"></div>
-    </div>
-    <div class="td">
-        <div class="left txt-xs txt-w clear spc-sm-t spc-xs-b brd-xs-b mrg-md-b">
-            <span class="bg-s1 spc-sm rad-sm">{{=match.games}}</span>
-            <a target="_blank" href="http://csgolounge.com/match?m={{=match.matchId}}"><span class="bg-g spc-sm txt-w rad-sm">cs:go lounge</span></a>
-        </div>
-    </div>
-</div>
-
-<div class="txt-w tr align-m txt-xlg txt-oswald clear">
-     <div class="td align-r col-6 bg-w spc-sm rad-sm-t1 brd-xs"
-        {{? !match.finished}}
-            style="background: linear-gradient(to right, #86c348 0%,#ffffff {{=match.t1.rate}},#ffffff 100%);"
-        {{?}}>
-        {{? winner}}
-            {{? winner=='t1'}}
-                <h1 class="spc-md-l txt-up left txt-g">win <span class="txt-md">({{=match.t1.rate}})</span></h1>
-            {{??}}
-                <h1 class="spc-md-l txt-up left txt-red">loss</h1>
-            {{?}}
-        {{??}}
-            <span class="txt-md spc-lg-t spc-lg-l txt-bold txt-w left">{{=match.t1.rate}}</span>
-        {{?}}
-        <img height="50" class="right rad-sm" src="{{=match.t1.img}}">
-        <h1 class="right txt-b spc-md-r">{{=match.t1.name}}</h1>
-    </div>
-    <div class="td align-m">
-        <div class="line-h bg-s1 line-w-md"></div>
-    </div>
-    <div class="align-c align-t td">
-        <div class="line-v bg-s1 center line-h-md"></div>
-        <div class="spc-md-rl spc-sm-tb bg-s1 rad-circle">
-            <img width="20" src="http://s17.postimg.org/cfcajjfnz/image.png">
-        </div>
-    </div>
-    <div class="td align-m">
-        <div class="line-h bg-s1 line-w-md"></div>
-    </div>
-    <div class="td align-l col-6 rad-sm-t2 bg-w spc-sm brd-xs" 
-        {{? !match.finished}}
-            style="background: linear-gradient(to left, #86c348 0%,#ffffff {{=match.t2.rate}},#ffffff 100%);"
-        {{?}}>
-        
-        <img height="50" class="left rad-sm" src="{{=match.t2.img}}">
-        <h1 class="left txt-b spc-md-l">{{=match.t2.name}}</h1>
-        {{? winner}}
-            {{? winner=='t2'}}
-                <h1 class="spc-md-r txt-up right txt-g">win <span class="txt-md">({{=match.t2.rate}})</span></h1>
-            {{??}}
-                <h1 class="spc-md-r txt-up right txt-red">loss</h1>
-            {{?}}
-            
-        {{??}}
-            <span class="txt-md spc-lg-t align-b spc-lg-r txt-bold txt-w right">{{=match.t2.rate}}</span>
-        {{?}}
-    </div>
-</div>*/

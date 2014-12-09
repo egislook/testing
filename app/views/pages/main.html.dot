@@ -45,8 +45,11 @@
 
 
 
-<div class="txt-w txt-sm txt-up align-c spc-md-rl spc-lg-t">
-    <div class="spc-sm bg-r op-6">20 Last Finished games</div>
+<div class="txt-w txt-sm align-c spc-md-rl spc-lg-t">
+    <div class="spc-sm bg-r op-6">
+        <span class="txt-up">20 Last Finished games</span>
+        <a href="/history"><span class="bg-w txt-xs txt-b bt spc-sm-rl">view history</span></a>
+    </div>
 </div>
 
 

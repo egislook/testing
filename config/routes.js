@@ -13,6 +13,8 @@ module.exports = function routes() {
   this.get('/hltv', 'pages#hltv');
   this.post('/show', 'pages#show');
   this.get('/match/?(:id)?', 'pages#match');
+  this.get('/history', 'pages#history');
+  
   
   this.get('/', 'pages#main');
   this.post('/stats', 'pages#stats');

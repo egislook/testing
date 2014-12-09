@@ -144,6 +144,25 @@ pagesController.match = function(){
   }
 }
 
+pagesController.history = function(){
+  this.title = 'gameHistory';
+  
+  var app = this;
+  async.parallel(
+    {
+      finished    : Matches.return,
+      bets        : Bets.returnSortedByMatch,
+      users       : Users.return
+    },
+    function(err, results){
+      app.users = err || results.users;
+      app.finished = err || results.finished;
+      app.bets = err || results.bets;
+      app.render();
+    }
+  );
+}
+
 pagesController.hltv = function(){
   var app=this,req=app.req,res=app.res;
   var match, teams = [];
