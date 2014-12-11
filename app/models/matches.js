@@ -159,10 +159,9 @@ var model = {
             
             time = match.time;
             if(match.time.indexOf('LIVE')!=-1){
-              match.time = 'Live';
-            } else {
-              match.time = parseInt(match.time) + ' ' + (time.indexOf('minute')!=-1 ? 'm' : time.indexOf('hour')!=-1 ? 'h' : 'd');
+              match.live = true;
             }
+            match.time = parseInt(match.time) + ' ' + (time.indexOf('minute')!=-1 ? 'm' : time.indexOf('hour')!=-1 ? 'h' : 'd');
               
             }
           match ? matches.push(match) : false;
