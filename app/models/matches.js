@@ -28,7 +28,7 @@ var model = {
   },
   
   returnUnfinished : function(callback){
-    model.Matches.find({finished : {$exists : false}}).sort({startMs : 1}).lean().exec(function(err, data) {
+    model.Matches.find({$or : [{"finished" : {$exists : false}}, {"finished" : false}]}).sort({startMs : 1}).lean().exec(function(err, data) {
       callback(err, data);
     });
   },
