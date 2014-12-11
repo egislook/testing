@@ -100,12 +100,12 @@ var model = {
           t1 : {
             name : teams.eq(0).parent().find('b').text(),
             rate : teams.eq(0).parent().find('i').text(),
-            img : teams.eq(0).css('background').replace("url('",'').replace("')",'').replace("/",'')
+            img : teams.eq(0).css('background').replace("url('",'').replace("')",'').replace("\",'')
           },
           t2 : {
             name : teams.eq(1).parent().find('b').text(),
             rate : teams.eq(1).parent().find('i').text(),
-            img : teams.eq(1).css('background').replace("url('",'').replace("')",'').replace("/",'')
+            img : teams.eq(1).css('background').replace("url('",'').replace("')",'').replace("\",'')
           }
         }
        
@@ -144,12 +144,12 @@ var model = {
               t1 : {
                 name : game.find('.teamtext').eq(0).find('b').text(),
                 rate : game.find('.teamtext').eq(0).find('i').text(),
-                img : game.find('.team').eq(0).css('background').replace("url('",'').replace("')",'').replace("/",'')
+                img : game.find('.team').eq(0).css('background').replace("url('",'').replace("')",'').replace("\",'')
               },
               t2 : {
                 name : game.find('.teamtext').eq(1).find('b').text(),
                 rate : game.find('.teamtext').eq(1).find('i').text(),
-                img : game.find('.team').eq(1).css('background').replace("url('",'').replace("')",'').replace("/",'')
+                img : game.find('.team').eq(1).css('background').replace("url('",'').replace("')",'').replace("\",'')
               }
             }
             
