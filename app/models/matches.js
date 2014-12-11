@@ -100,12 +100,12 @@ var model = {
           t1 : {
             name : teams.eq(0).parent().find('b').text(),
             rate : teams.eq(0).parent().find('i').text(),
-            img : teams.eq(0).css('background').split("'")[1]
+            img : teams.eq(0).css('background').replace("url('",'').replace("')",'')
           },
           t2 : {
             name : teams.eq(1).parent().find('b').text(),
             rate : teams.eq(1).parent().find('i').text(),
-            img : teams.eq(1).css('background').split("'")[1]
+            img : teams.eq(1).css('background').replace("url('",'').replace("')",'')
           }
         }
        
@@ -144,12 +144,12 @@ var model = {
               t1 : {
                 name : game.find('.teamtext').eq(0).find('b').text(),
                 rate : game.find('.teamtext').eq(0).find('i').text(),
-                img : game.find('.team').eq(0).css('background').split("'")[1]
+                img : game.find('.team').eq(0).css('background').replace("url('",'').replace("')",'')
               },
               t2 : {
                 name : game.find('.teamtext').eq(1).find('b').text(),
                 rate : game.find('.teamtext').eq(1).find('i').text(),
-                img : game.find('.team').eq(1).css('background').split("'")[1]
+                img : game.find('.team').eq(1).css('background').replace("url('",'').replace("')",'')
               }
             }
             
@@ -158,8 +158,13 @@ var model = {
             }
             
             time = match.time;
-            match.time = parseInt(match.time) + ' ' + (time.indexOf('minute')!=-1 ? 'm' : time.indexOf('hour')!=-1 ? 'h' : 'd');
-          }
+            if(match.time.indexOf('LIVE')!=-1){
+              match.time = 'Live';
+            } else {
+              match.time = parseInt(match.time) + ' ' + (time.indexOf('minute')!=-1 ? 'm' : time.indexOf('hour')!=-1 ? 'h' : 'd');
+            }
+              
+            }
           match ? matches.push(match) : false;
         })
       }
