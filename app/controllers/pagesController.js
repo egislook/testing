@@ -77,8 +77,6 @@ pagesController.stats = function(){
   var ip = help.getIp(req);
   var a = {msg : 'server can not save data', ok : false};
   
-  console.log('just got some data');
-  
   if(user){
     
     Users.returnByUser(user, function(err, userData){
@@ -88,12 +86,12 @@ pagesController.stats = function(){
           game.user = user;
           if(game.t1 && game.t2){
             var win = game.win;
+            var value = game.value;
             async.parallel({
               
               bet : function(callback){
                 Bets.returnById(game, function(err, bet){
-                  console.log(bet);
-                  if(bet && bet.win != win){
+                  if(bet && (bet.win != win || bet.value != value)){
                     Bets.update(game, function(err){callback(err, {a : 'updated', d : bet})});
                   } else if(bet && bet.win == win) {
                     callback(err, {a : 'none', d : bet})

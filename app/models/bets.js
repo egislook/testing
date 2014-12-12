@@ -81,6 +81,8 @@ var model = {
     var bet = { 
       win : data.win,
       pot : data.pot,
+      value : data.value,
+      items : data.items,
       updated : help.date('ms')
     }
     
