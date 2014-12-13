@@ -15,7 +15,7 @@
         
         <div class="col-2 left align-c">
             <div class="clear">
-                <span class="txt-xs txt-w">after {{= match.time}}</span>
+                <span class="txt-xs txt-w">{{= match.live ? '<b class="txt-g">Live</b>' : 'after'+match.time}}</span>
             </div>
         </div>
         

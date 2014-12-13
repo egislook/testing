@@ -18,7 +18,7 @@ var update = function(app){
             app.games = [];
            for(var i in data){
                var match = data[i];
-               if(!match.finished && match.time != 'Live'){
+               if(!match.finished){
                    Matches.update(match, function(){});
                    app.games ? app.games.push(match) : app.games = [match];
                } else {
