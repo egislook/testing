@@ -1,50 +1,55 @@
 <div class="w-max sh-box-b-s1-l brd-xs-b brd-d-d bg-stickers clear">
-    <div class="spc-lg brd-xs-b brd-b1 clear">
-        <div class="col-4 left align-c">
-            <div class="txt-w txt-w spc-sm txt-xs">Our small betting community.</div>
-            <a href="/">
-                <div class="brd-xs brd-w">
-                    <h1 class="txt-oswald txt-w">Go Big or Go Home.</h1>
-                </div>
-            </a>
-            <div class="align-l op-8">
-                <div class="spc-xs-b spc-xs-t">
-                    <a target="_blank" href="https://chrome.google.com/webstore/detail/wdpwp-bettrack/naimocokmoolndojocncllmpbgoipeem">
-                        <div class="txt-s2 spc-sm bg-w inline bt">Download chrome extension</div>
-                    </a>
-                </div>
-                <div class="spc-xs-b">
-                    <a target="_blank" href="http://csgolounge.com/">
-                        <div class="txt-s2 spc-sm bg-w inline bt">CS go lounge</div>
-                    </a>
-                </div>
-                <div class="spc-xs-b">
-                    <a target="_blank" href="http://hltv.org/">
-                        <div class="txt-s2 spc-sm bg-w inline bt">HLTV</div>
-                    </a>
-                </div>
-            </div>
-            <div class="spc-lg-tb">
-                {{~ it.games :match}}
-                    {{#def.loadfile('pages/main/game.dot')}}
-                {{~}}
-            </div>
-        </div>
-        
-        <div class="txt-oswald txt-w txt-md right col-2 align-r">
-            {{? it.users}}
-                {{for(var i in it.users) { }}
-                    {{? it.users[i].stats.count>0}}
-                        {{var pot = it.users[i].stats.balance ? it.users[i].stats.balance : it.users[i].stats.win - it.users[i].stats.loss;}}
-                        <a href="/{{=it.users[i].user}}">
-                            <div class="spc-xs spc-md-l mrg-xs-b align-l txt-w" style="background:#000; opacity:0.8">
-                                {{=it.users[i].name}}
-                                <span class="{{=pot<=0 ? 'txt-red' : 'txt-g'}} right">{{= pot.toFixed(2)}} $</span>
-                            </div>
+    <div class="bg-fade">
+        <div class="spc-lg brd-xs-b brd-b1 clear">
+            <div class="col-4 left align-c">
+                <div class="txt-w txt-w spc-sm txt-xs">Our small betting community.</div>
+                <a href="/">
+                    <div class="brd-xs brd-w">
+                        <h1 class="txt-oswald txt-w">Go Big or Go Home.</h1>
+                    </div>
+                </a>
+                <div class="align-l op-8">
+                    <div class="spc-xs-b spc-xs-t">
+                        <a target="_blank" href="https://chrome.google.com/webstore/detail/wdpwp-bettrack/naimocokmoolndojocncllmpbgoipeem">
+                            <div class="txt-s2 spc-sm bg-w inline bt">Download chrome extension</div>
                         </a>
-                    {{?}}
-                {{ } }}
-            {{?}}
+                    </div>
+                    <div class="spc-xs-b">
+                        <a target="_blank" href="http://csgolounge.com/">
+                            <div class="txt-s2 spc-sm bg-w inline bt">CS go lounge</div>
+                        </a>
+                    </div>
+                    <div class="spc-xs-b">
+                        <a target="_blank" href="http://hltv.org/">
+                            <div class="txt-s2 spc-sm bg-w inline bt">HLTV</div>
+                        </a>
+                    </div>
+                </div>
+                <div class="spc-lg-tb">
+                    <div class="spc-sm texture-d brd-xs brd-d-d sh-box-b-s1-l">
+                        {{~ it.games :match}}
+                            {{#def.loadfile('pages/main/game.dot')}}
+                        {{~}}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="txt-oswald txt-w txt-md right col-2 align-r">
+                {{? it.users}}
+                    {{for(var i in it.users) { }}
+                        {{? it.users[i].stats.count>0}}
+                            {{var pot = it.users[i].stats.balance ? it.users[i].stats.balance : it.users[i].stats.win - it.users[i].stats.loss;}}
+                            <a href="/{{=it.users[i].user}}">
+                                <div class="spc-xs spc-md-l mrg-xs-b align-l txt-w" style="background:#000; opacity:0.8">
+                                    {{=it.users[i].name}}
+                                    <span class="{{=pot<=0 ? 'txt-red' : 'txt-g'}} right">{{= pot.toFixed(2)}} $</span>
+                                </div>
+                            </a>
+                        {{?}}
+                    {{ } }}
+                {{?}}
+                
+            </div>
             
         </div>
     </div>

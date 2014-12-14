@@ -1,4 +1,4 @@
-<div class="spc-xs clear op-8 txt-oswald mrg-xs-b" style="background:#000;">
+<div class="spc-xs clear txt-oswald mrg-xs-b brd-d-d" /*style="background:#000;"*/>
     <a target="_blank" href="http://csgolounge.com/match?m={{=match.matchId}}">
         <div class="col-5 left">
             <div class="align-l spc-xs clear" 

@@ -42,6 +42,10 @@
   background-image: url('http://subtlepatterns.com/patterns/zwartevilt.png');
 }
 .bg-stickers {
-  background-image: url('http://global-offensive.com/wp-content/uploads/2014/02/counter-strike-global-offensive-game-hd-wallpaper-1920x1080-8976.jpg');
+  background-image: url('http://i5.minus.com/iCEr5orUtxPFA.png');
   background-size: 100%;
+  overflow: hidden;
+}
+.bg-fade {
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.2) 0, rgba(0, 0, 0, 0.8) 100%);
 }
