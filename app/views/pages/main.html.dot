@@ -5,6 +5,8 @@
     {{~it.unFinished :match}}
         {{
             var winner = match.winner ? match.winner : false;
+            match.t1.cof = parseInt(match.t2.rate) / parseInt(match.t1.rate);
+            match.t2.cof = parseInt(match.t1.rate) / parseInt(match.t2.rate);
         }}
         <div class="{{= match.finished ? 'op-6' : ''}}">
             <div class="spc-md">

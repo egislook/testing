@@ -33,7 +33,7 @@
                 <div class="fa fa-chevron-right txt-b1 right spc-ml-t spc-ml-rl txt-sh-d-l"></div>
               {{??}}
                 <div class="txt-s2-d align-r spc-sm bg-b1 right">
-                    <div class="txt-s1-d">{{=bet.pot || ''}}$</div>
+                    <div class="txt-s1-d">{{=(bet.value*match.t2.cof).toFixed(2) || bet.pot || ''}}$</div>
                     <div class="txt-xs txt-s2-l">Potential reward</div>
                 </div>
                 <div class="fa fa-chevron-right txt-b1 right spc-ml-t spc-ml-rl txt-sh-d-l"></div>

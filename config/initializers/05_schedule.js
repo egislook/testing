@@ -87,6 +87,11 @@ var statsUpdate = function(){
 }
 
 module.exports = function() {
+    //statsUpdate();
+    
+    /*Bets.returnByMatchId('1988', function(err, bets){
+        console.log(bets);   
+    })*/
     update(this);
   //repeat(10000, update(app));
 }

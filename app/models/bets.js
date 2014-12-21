@@ -32,6 +32,12 @@ var model = {
     }).lean();
   },
   
+  returnByMatchId : function(matchId, callback){
+    model.Bets.find({matchId : matchId}).lean().exec(function(err, bets){
+      callback(err, bets);
+    });
+  },
+  
   returnById : function(data, callback){
     model.Bets.findOne({matchId : data.matchId, user : data.user}, function(err, bet) {
       callback(err, bet);
@@ -65,16 +71,28 @@ var model = {
     });
   },
   
-  finished : function(data, callback){
+  finished : function(match, callback){
     //console.log(data);
-    var bet = { 
-      winner : data.winner || 'none',
+    match.t1.cof = parseInt(match.t2.rate) / parseInt(match.t1.rate);
+    match.t2.cof = parseInt(match.t1.rate) / parseInt(match.t2.rate);
+    var data = { 
+      winner : match.winner || 'none',
       updated : help.date('ms')
     }
+    callback(false, false);
     
-    model.Bets.update({matchId : data.matchId}, {$set :bet}, {upsert : false, multi: true}, function(err, data) {
+    model.returnByMatchId(match.matchId, function(err, bets){
+      bets.forEach(function(bet){
+        var betPot = (bet.value * match[bet.win].cof).toFixed(2);
+        data.pot = betPot;
+        model.Bets.update({matchId : match.matchId, user : bet.user}, {$set : data}, {upsert : false}, function(err, data) {});
+      });
+      callback(err, bets);
+    })
+    
+    /*model.Bets.update({matchId : data.matchId}, {$set :bet}, {upsert : false, multi: true}, function(err, data) {
       callback(err, data);
-    });
+    });*/
   },
   
   update : function(data, callback){
