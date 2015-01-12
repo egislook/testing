@@ -10,7 +10,7 @@ var model = {
   Matches : mongoose.model('Matches', matchSchema),
   
   return : function(callback){
-    model.Matches.find({finished : true}).lean().sort({date : -1, startMs : -1}).exec(function(err, data) {
+    model.Matches.find({finished : true}).lean().sort({date : -1, updated : -1}).exec(function(err, data) {
       callback(err, data);
     });
   },
@@ -34,7 +34,7 @@ var model = {
   },
   
   returnFinished : function(callback){
-    model.Matches.find({finished : true}).sort({date : -1, startMs : -1}).limit(20).lean().exec(function(err, data) {
+    model.Matches.find({finished : true}).sort({date : -1, updated : -1}).limit(20).lean().exec(function(err, data) {
       callback(err, data);
     });
   },
@@ -221,6 +221,11 @@ var model = {
       })
       
     //offset < 50 ? setTimeout(function(){model.getHLTVstatistic(offset+50,matches,matchIndex)}, 500) : false;
+  },
+  
+  getHLTVmatches : function(cb){
+    var url = 'http://www.hltv.org/?pageid=2';
+    
   },
 
 }

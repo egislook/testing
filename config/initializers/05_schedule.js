@@ -67,12 +67,15 @@ var statsUpdate = function(){
         var stats = {}, bet;
         for(var i in bets){
             bet = bets[i];
-            stats[bet.user] ? false : stats[bet.user] = {value : 0, win : 0, loss : 0, count : 0, balance : 0};
+            stats[bet.user] ? false : stats[bet.user] = {value : 0, win : 0, loss : 0, count : 0, balance : 0, last : 0, updated : 0};
             if(bet.value){
                 bet.winner ? stats[bet.user].count ++ : false;
                 if(bet.winner && bet.winner!='none'){
                     bet.winner == bet.win ? stats[bet.user].win += Number(bet.pot) : stats[bet.user].loss += bet.value;
                     bet.winner == bet.win ? stats[bet.user].balance += Number(bet.pot) : stats[bet.user].balance -= bet.value;
+                    stats[bet.user].last = bet.winner == bet.win ? bet.pot : -bet.value.toFixed(2);
+                    stats[bet.user].updated = bet.updated;
+                    
                 }
                 stats[bet.user].value += bet.value;
             }

@@ -39,20 +39,31 @@
                 </div>
             </div>
             
-            <div class="txt-oswald txt-w txt-md right col-2 align-r">
+            <div class="txt-oswald txt-w txt-md right col-3 align-r">
                 {{? it.users}}
                     {{for(var i in it.users) { }}
-                        {{? it.users[i].stats.count>0}}
-                            {{var pot = it.users[i].stats.balance ? it.users[i].stats.balance : it.users[i].stats.win - it.users[i].stats.loss;}}
+                        {{var user = it.users[i];}}
+                        {{? user.stats.count>0 && user.stats.updated+604800000>it.ms}}
+                            {{
+                                var pot = it.users[i].stats.balance ? it.users[i].stats.balance : it.users[i].stats.win - it.users[i].stats.loss;
+                                var last = it.users[i].stats.last;
+                            }}
                             <a href="/{{=it.users[i].user}}">
-                                <div class="spc-xs spc-md-l mrg-xs-b align-l txt-w" style="background:#000; opacity:0.8">
-                                    {{=it.users[i].name}}
-                                    <span class="{{=pot<=0 ? 'txt-red' : 'txt-g'}} right">{{= pot.toFixed(2)}} $</span>
+                                <div class="spc-xs spc-md-l mrg-xs-b align-l bt txt-w clear" style="background:#000; opacity:0.8">
+                                    <div class="col-8 left">
+                                        {{=it.users[i].name}} <span class="{{=last<=0 ? 'txt-red' : 'txt-g'}} txt-xs">({{= last}}$)</span>
+                                    </div>
+                                    <div class="col-4 left align-r">
+                                        <span class="{{=pot<=0 ? 'txt-red' : 'txt-g'}}">{{= pot.toFixed(2)}}$</span>
+                                    </div>
                                 </div>
                             </a>
                         {{?}}
                     {{ } }}
                 {{?}}
+                <div class="spc-md txt-sm bg-r txt-w align-c op-8">
+                    Users who did not bet in the last 7 days are not shown on ladder
+                </div>
                 
             </div>
             

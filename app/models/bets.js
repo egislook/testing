@@ -7,9 +7,9 @@ var model = {
   Bets : mongoose.model('Bets', betSchema),
   
   return : function(callback){
-    model.Bets.find({}, function(err, data) {
+    model.Bets.find({}).sort({updated : 1}).lean().exec(function(err, data) {
       callback(err, data);
-    }).lean();
+    });
   },
   
   returnSortedByMatch : function(callback){

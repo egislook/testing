@@ -6,7 +6,7 @@
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	</head>
 	<body class="texture-d">
-	    {{? it.settings.env === 'development' && false }}
+	    {{? it.settings.env === 'development' && true }}
 	        {{#def.loadfile('_comp/data.dot')}}
     	{{?}}
 		{{=it.body}}
