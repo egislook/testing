@@ -11,7 +11,7 @@
     	{{?}}
 		{{=it.body}}
 		<script src="/js/default.js"></script>
-		<script>timer();</script>
+		/*<script>timer();</script>*/
 		
 	</body>
 </html>

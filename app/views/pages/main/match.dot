@@ -24,8 +24,7 @@
         
         <div class="col-2 left align-c">
             {{? match.startMs && !match.finished}}
-                {{var left = (match.startMs-it.ms)/1000;}}
-                <div class="txt-lg {{= left<1 ?  'txt-g' : 'txt-w'}} time-left txt-up">{{= left<1 ?  'live' : left}}</div>
+                <div class="txt-lg txt-w time-left txt-up">{{= match.time}}</div>
             {{??}}
                 <div class="txt-lg txt-s1 txt-up">{{=match.date}}</div>
             {{?}}
