@@ -15,7 +15,9 @@
                     <div class="t1 col-6 left">
                         {{?it.bets[match.matchId] && it.bets[match.matchId].t1}}
                             {{~it.bets[match.matchId].t1 :bet}}
+                                {{? bet.user != 'Slapukas'}}
                                 {{#def.loadfile('pages/main/bet1.dot')}}
+                                {{?}}
                             {{~}}
                         {{??}}
                             <div class="spc-lg txt-s2-d op-6 txt-xs align-c txt-up">There is no bets for this team</div>
@@ -24,7 +26,9 @@
                     <div class="t2 col-6 right">
                         {{?it.bets[match.matchId] && it.bets[match.matchId].t2}}
                             {{~it.bets[match.matchId].t2 :bet}}
-                                {{#def.loadfile('pages/main/bet2.dot')}}
+                                {{? bet.user != 'Slapukas'}}
+                                    {{#def.loadfile('pages/main/bet2.dot')}}
+                                {{?}}
                             {{~}}
                         {{??}}
                             <div class="spc-lg txt-s2-d op-6 txt-xs align-c txt-up">There is no bets for this team</div>

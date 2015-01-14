@@ -20,6 +20,12 @@ var update = function(app){
                var match = data[i];
                if(!match.finished){
                    Matches.update(match, function(){});
+                   
+                   if(!games[match.matchId])
+                   {
+                        Matches.data(match.matchId, function(err, data){})
+                   }
+                   
                    app.games ? app.games.push(match) : app.games = [match];
                } else {
                    if(games[match.matchId]){
